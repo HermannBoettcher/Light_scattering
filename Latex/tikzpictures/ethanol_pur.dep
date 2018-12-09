@@ -1,0 +1,2 @@
+tikzpictures/ethanol_pur.pdf: data/ethanol_40000.txt
+tikzpictures/ethanol_pur.pdf: data/wasser_40000.txt

@@ -1,0 +1,2 @@
+tikzpictures/C6H12.pdf: data/C6H12_pol0.txt
+tikzpictures/C6H12.pdf: data/C6H12_pol1.txt

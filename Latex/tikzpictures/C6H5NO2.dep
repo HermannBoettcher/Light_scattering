@@ -1,0 +1,2 @@
+tikzpictures/C6H5NO2.pdf: data/C6H5NO2_pol0.txt
+tikzpictures/C6H5NO2.pdf: data/C6H5NO2_pol1.txt

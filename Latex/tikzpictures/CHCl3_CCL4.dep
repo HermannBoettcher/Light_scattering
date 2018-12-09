@@ -1,0 +1,2 @@
+tikzpictures/CHCl3_CCL4.pdf: data/CCl4_pol0.txt
+tikzpictures/CHCl3_CCL4.pdf: data/CHCl3_pol0.txt
