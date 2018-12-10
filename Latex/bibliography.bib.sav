@@ -8,4 +8,12 @@
   volume  = {113},
 }
 
+@PhdThesis{helden,
+  author = {Laurent Helden},
+  title  = {Untersuchung von Partikel-Wand-Wechselwirkungen mit evaneszenter Lichtstreuung},
+  school = {University of Constance},
+  year   = {2003},
+  month  = {05},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
