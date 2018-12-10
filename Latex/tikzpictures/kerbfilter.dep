@@ -1,5 +1,0 @@
-tikzpictures/kerbfilter.pdf: data/handy_ohne_kerb.txt
-tikzpictures/kerbfilter.pdf: data/handy_mit_kerb.txt
-tikzpictures/kerbfilter.pdf: data/handy_mit_kerb_5_grad.txt
-tikzpictures/kerbfilter.pdf: data/handy_mit_kerb_10_grad.txt
-tikzpictures/kerbfilter.pdf: data/handy_mit_kerb_15_grad.txt

@@ -1,2 +1,0 @@
-tikzpictures/CCl4_beide.pdf: data/CCl4_pol0.txt
-tikzpictures/CCl4_beide.pdf: data/CCl4_pol1.txt

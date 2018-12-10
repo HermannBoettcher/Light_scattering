@@ -1,2 +1,0 @@
-tikzpictures/CDCl3.pdf: data/CDCl3_pol0.txt
-tikzpictures/CDCl3.pdf: data/CDCl3_pol1.txt

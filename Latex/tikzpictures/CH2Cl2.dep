@@ -1,2 +1,0 @@
-tikzpictures/CH2Cl2.pdf: data/CH2Cl2_pol0.txt
-tikzpictures/CH2Cl2.pdf: data/CH2Cl2_pol1.txt

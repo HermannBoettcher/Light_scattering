@@ -1,4 +1,0 @@
-tikzpictures/hg_he_spektren.pdf: data/hg_spektrum_fit.txt
-tikzpictures/hg_he_spektren.pdf: data/hg_spektrum_fit.txt
-tikzpictures/hg_he_spektren.pdf: data/he_spektrum_fit.txt
-tikzpictures/hg_he_spektren.pdf: data/he_spektrum_fit.txt

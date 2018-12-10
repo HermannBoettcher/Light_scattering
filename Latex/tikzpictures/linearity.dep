@@ -1,8 +1,0 @@
-tikzpictures/linearity.pdf: data/he_50.txt
-tikzpictures/linearity.pdf: data/he_100.txt
-tikzpictures/linearity.pdf: data/he_200.txt
-tikzpictures/linearity.pdf: data/he_400.txt
-tikzpictures/linearity.pdf: data/he_800.txt
-tikzpictures/linearity.pdf: data/he_2000.txt
-tikzpictures/linearity.pdf: data/he_3000.txt
-tikzpictures/linearity.pdf: data/he_4000.txt

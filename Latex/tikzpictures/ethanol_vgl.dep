@@ -1,6 +1,0 @@
-tikzpictures/ethanol_vgl.pdf: data/ethanol_wasser_2575_40000.txt
-tikzpictures/ethanol_vgl.pdf: data/ethanol_wasser_3070_40000.txt
-tikzpictures/ethanol_vgl.pdf: data/ethanol_wasser_3565_40000.txt
-tikzpictures/ethanol_vgl.pdf: data/ethanol_wasser_4060_40000.txt
-tikzpictures/ethanol_vgl.pdf: data/ethanol_wasser_4555_40000.txt
-tikzpictures/ethanol_vgl.pdf: data/ethanol_wasser_40000.txt
