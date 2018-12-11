@@ -2,14 +2,7 @@
 
 \begin{document}
 
-  \section{Introduction}
-
-    This experiments serves to examine the position fluctuations of polystyrene particles with a diameter of
-    \begin{equation*}
-      a=\SI{4,28}{\micro\meter}
-    \end{equation*}
-    in an aqueous dispersion that is highly dilute. The observed motion is called the \textit{Brownian motion} (compare \cref{sec:brownian-motion}). To this end, the form of the potential surrounding the single particles is to be determined. Moreover, the determination of the dependency of the diffusion coefficient on the distance between particle and the walls of the cuvette containing the dispersion along with the total distance for a given particle are main goals of the experiment. Regarding the used optical tweezers, the light force on the particles is measured. Last, through measurements of silica particles' movement in aqueous dispersions with different concentrations of salt, the variation of the screening length is examined.
-
+\chapter{Physical background}
 
     \section{Brownian motion}
     \label{sec:brownian-motion}
@@ -150,10 +143,9 @@
         \end{align}
 
 
-      \section{Evanescent Field}
+      \section{Evanescent field}
       \label{sec:evanenscent}
 
-        %dissertation helden
         To analyze the position fluctuations of the particles in the aqueous dispersion, an evanescent field is utilized. An evanescent field is a field of any kind, were there is no net energy flow in any given direction. In this experiment, this is achieved by total reflection. \\
         If  a lightbeam hits a transition between two media with the refraction indices $n_1$ for medium 1 and $n_2$ for medium 2 at the angle $\Theta_1$, part of it is refracted with the angle $\Theta_2$ and part of it is reflected with the angle $\Theta_1$. This relation is described by snells law
         \begin{equation*}
@@ -175,55 +167,60 @@
         \begin{equation*}
           \beta^{-1}=\frac{\lambda_0}{4 \pi \sqrt{n_1^2-n_2^2}}.
         \end{equation*}
+        \cite{helden}
 
 
       \section{Determination of the potential form}
       \label{sec:determination}
 
-      The scattering intensity $I(z)$ depends, in the following manner, on the distance $z$ between the particle and the wall:
-      \begin{align}
-        \begin{split}
-          I(z)=I_0\exp\left( -\beta z \right) \leftrightarrow z&=-\beta^{-1}\ln\left(\frac{I_z}{I_0}\right)\\
-          &=-\beta^{-1}\ln I(z) + \underbrace{\beta^{-1}\ln I_0}_{=z_0}
-        \end{split}
-        \label{eq:I-von-z}
-      \end{align}
-      Where $\beta^{-1}$ is the penetration depth of the evanescent field and $I_0$ is the scatter intensity that results when particles and wall are in direct contact. Without knowing this constant, only relative distances can be determined, since $z_0$ can not be computed. The absolute distance is determined hydrodynamically in the second section of the evaluation; here $I_0 = 10$ is assumed arbitraily. The Boltzmann equation combines the distance-dependent probability distribution $p(z)$ with the interaction potential $V(z)$ between particle and wall:
-      \begin{equation*}
-        p(z)=p_0\exp\left( -\frac{V(z)}{k_\mathrm{B}T}\right) \leftrightarrow \frac{V(z)}{k_\mathrm{B}T}=-\ln\left(\frac{p(z)}{p_0}\right)
-      \end{equation*}
-      The distance-dependant probability distribution is calculated using \cref{eq:I-von-z}, and can then be converted into en intensity probability distribiution $N(I)$:
-      \begin{equation*}
-        p(z)=N(I)\frac{\mathrm{d}I}{\mathrm{d}z}=-\beta N(I)I(z),
-      \end{equation*}
-      where $N(I)$ is obtained directly from the measured data as a histogram. The resulting potential is then
-      \begin{equation}
-        \frac{V(z)}{k_\mathrm{B}T}=-\ln\left(\frac{-\beta N(I)I(z)}{p_0}\right)=-\ln\left[ N(I)I(z) \right]+\ln\left( -\frac{p_0}{\beta}\right).
-        \label{eq:potential}
-      \end{equation}
-      Before creating the histogram, the background must first be subtracted from the measured data. This corresponds to the scatter signal in the absence of the particle. For this purpose, the particle can be pulled out of the field of view with the optical tweezers and the background at the measuring position can be determined directly (approximately $\SI{10}{\second}$ to $\SI{30}{\second}$ measurement averaged). The number of bins in the histogram determines the number of potential values that are calculated. The error on the calculated potential value decreases with increasing number of counts per bin. Approximately 100 bins represent a good compromise between a small error of the individual potential values on the one hand and good local resolution on the other. \Cref{eq:potential} potential already has the correct shape, but not yet the correct absolute distance from the surface.
+        The following explanations are taken from \cite{anleitung}.
+
+        The scattering intensity $I(z)$ depends, in the following manner, on the distance $z$ between the particle and the wall:
+        \begin{align}
+          \begin{split}
+            I(z)=I_0\exp\left( -\beta z \right) \leftrightarrow z&=-\beta^{-1}\ln\left(\frac{I_z}{I_0}\right)\\
+            &=-\beta^{-1}\ln I(z) + \underbrace{\beta^{-1}\ln I_0}_{=z_0}
+          \end{split}
+          \label{eq:I-von-z}
+        \end{align}
+        Where $\beta^{-1}$ is the penetration depth of the evanescent field and $I_0$ is the scatter intensity that results when particles and wall are in direct contact. Without knowing this constant, only relative distances can be determined, since $z_0$ can not be computed. The absolute distance is determined hydrodynamically in the second section of the evaluation; here $I_0 = 10$ is assumed arbitraily. The Boltzmann equation combines the distance-dependent probability distribution $p(z)$ with the interaction potential $V(z)$ between particle and wall:
+        \begin{equation*}
+          p(z)=p_0\exp\left( -\frac{V(z)}{k_\mathrm{B}T}\right) \leftrightarrow \frac{V(z)}{k_\mathrm{B}T}=-\ln\left(\frac{p(z)}{p_0}\right)
+        \end{equation*}
+        The distance-dependant probability distribution is calculated using \cref{eq:I-von-z}, and can then be converted into en intensity probability distribiution $N(I)$:
+        \begin{equation*}
+          p(z)=N(I)\frac{\mathrm{d}I}{\mathrm{d}z}=-\beta N(I)I(z),
+        \end{equation*}
+        where $N(I)$ is obtained directly from the measured data as a histogram. The resulting potential is then
+        \begin{equation}
+          \frac{V(z)}{k_\mathrm{B}T}=-\ln\left(\frac{-\beta N(I)I(z)}{p_0}\right)=-\ln\left[ N(I)I(z) \right]+\ln\left( -\frac{p_0}{\beta}\right).
+          \label{eq:potential}
+        \end{equation}
+        Before creating the histogram, the background must first be subtracted from the measured data. This corresponds to the scatter signal in the absence of the particle. For this purpose, the particle can be pulled out of the field of view with the optical tweezers and the background at the measuring position can be determined directly (approximately $\SI{10}{\second}$ to $\SI{30}{\second}$ measurement averaged). The number of bins in the histogram determines the number of potential values that are calculated. The error on the calculated potential value decreases with increasing number of counts per bin. Approximately 100 bins represent a good compromise between a small error of the individual potential values on the one hand and good local resolution on the other. \Cref{eq:potential} potential already has the correct shape, but not yet the correct absolute distance from the surface.
 
       \section{Hydrodynamic evaluation}
       \label{sec:hydrodynamic}
 
-      For the determination of the potential shape, only the probability distribution has so far been used. However, much more information is available in the measurement data. An analysis of the dynamics of the measured data provides information on the distance dependence of the diffusion coefficient and also allows the determination of the absolute distance. The 3D diffusion coefficient (far from the surface), $D_0$ is described by the Stokes-Einstein equation
-      \begin{equation*}
-        D_0=\frac{k_\mathrm{B}T}{6\pi\eta R},
-      \end{equation*}
-      where $\eta$ is the vescosity of the liquid and $R$ corresponds to the particule's radius. In the vincinity of a wall, where the liquid molecules can not move (stick boundary conditions), the diffusion coefficient becomes distance-dependent and anisotropic (compare \cref{subsec:brownian-wall}). The distance-dependent diffusion coefficient for diffusion perpendicular to the wall $D_\perp$ was calculated analytically by Brenner as an infinite series \cite{2}. This series can be approximated very well for small distances $z<R$ to
-      \begin{equation}
-        D_\perp = \frac{D_0}{\frac{R}{z}+0,2\ln\left(\frac{R}{z}\right) + 0,9712}.
-        \label{eq:d-perp-sheet}
-      \end{equation}
-      Considering the solution of the Langevin equation for a spherical particle near a wall, the distance-dependent diffusion coefficient can also be determined from the measured trajectory of the particle \cite{4}. To do this, the following procedure is applied:
-      \medskip
+        This section is taken from \cite{anleitung}, too.
 
-      \begin{enumerate}
-        \item The measured intensity data are converted into distances, whereby an arbitrary value is initially assumed for the scatter intensity at the contact of particle and wall ($I_0$ in \cref{eq:I-von-z}). The maximum input voltage of the A/D card of $\SI{10}{\volt}$ is for example a realistic starting value for $I_0$.
-        \item For the analysis of the dynamics, the measured trajectory is divided into about 20 intervals $a_j$ . For each $a_j$ , a histogram of the distance changes $\Delta z_i$ is generated within a certain time interval $\Delta t$. That under the condition that the $i$-th distance value $z_i$ measured in the trajectory is in the interval $a_j$, $z_i = z_{i+k} - z_i$ is calculated and entered into the histogram. The time interval $t = k \delta t_\mathrm{mess}$ is necessarily an integer multiple of the measurement interval $\delta t_\mathrm{mess}$ and $k = 1,2$, in order not to average over too long time intervals. Neglecting the effects of the interaction potential (curvature), a Gaussian distribution of $p$ the distance changes is to be expected, whose width is $\sigma_{z_i ,\Delta t} = \sqrt{2D_{z_i} \Delta t}$. In principle, $D_{(z_i)}$ can already be determined from the fit parameter $\sigma_{(z_i,t)}$ for a certain $\Delta t$. However, a smaller measurement error is obtained if $\sigma_{(z_i ,t)}$ against $\Delta t$, and  $D_{(z_i)}$ is determined from the slope \cite{4}.
-        \item The unknown parameter $I_0$ is now adapted such that the distance-dependent diffusion coefficient $D_z$ coincide with the theoretical predictions from \cref{eq:d-perp-sheet} ($\eta$ and $a$ are known). From this follows the correct absolute particle wall distance for the potential.
-      \end{enumerate}
-      In the practice of the experiment, the described evaluation is implemented by a predetermined MatLab routine, in which only $I_0$ has to be adapted as a parameter.
+        For the determination of the potential shape, only the probability distribution has so far been used. However, much more information is available in the measurement data. An analysis of the dynamics of the measured data provides information on the distance dependence of the diffusion coefficient and also allows the determination of the absolute distance. The 3D diffusion coefficient (far from the surface), $D_0$ is described by the Stokes-Einstein equation
+        \begin{equation*}
+          D_0=\frac{k_\mathrm{B}T}{6\pi\eta R},
+        \end{equation*}
+        where $\eta$ is the vescosity of the liquid and $R$ corresponds to the particule's radius. In the vincinity of a wall, where the liquid molecules can not move (stick boundary conditions), the diffusion coefficient becomes distance-dependent and anisotropic (compare \cref{subsec:brownian-wall}). The distance-dependent diffusion coefficient for diffusion perpendicular to the wall $D_\perp$ was calculated analytically by Brenner as an infinite series \cite{2}. This series can be approximated very well for small distances $z<R$ to
+        \begin{equation}
+          D_\perp = \frac{D_0}{\frac{R}{z}+0,2\ln\left(\frac{R}{z}\right) + 0,9712}.
+          \label{eq:d-perp-sheet}
+        \end{equation}
+        Considering the solution of the Langevin equation for a spherical particle near a wall, the distance-dependent diffusion coefficient can also be determined from the measured trajectory of the particle \cite{4}. To do this, the following procedure is applied:
+        \medskip
+
+        \begin{enumerate}
+          \item The measured intensity data are converted into distances, whereby an arbitrary value is initially assumed for the scatter intensity at the contact of particle and wall ($I_0$ in \cref{eq:I-von-z}). The maximum input voltage of the A/D card of $\SI{10}{\volt}$ is for example a realistic starting value for $I_0$.
+          \item For the analysis of the dynamics, the measured trajectory is divided into about 20 intervals $a_j$ . For each $a_j$ , a histogram of the distance changes $\Delta z_i$ is generated within a certain time interval $\Delta t$. That under the condition that the $i$-th distance value $z_i$ measured in the trajectory is in the interval $a_j$, $z_i = z_{i+k} - z_i$ is calculated and entered into the histogram. The time interval $t = k \delta t_\mathrm{mess}$ is necessarily an integer multiple of the measurement interval $\delta t_\mathrm{mess}$ and $k = 1,2$, in order not to average over too long time intervals. Neglecting the effects of the interaction potential (curvature), a Gaussian distribution of $p$ the distance changes is to be expected, whose width is $\sigma_{z_i ,\Delta t} = \sqrt{2D_{z_i} \Delta t}$. In principle, $D_{(z_i)}$ can already be determined from the fit parameter $\sigma_{(z_i,t)}$ for a certain $\Delta t$. However, a smaller measurement error is obtained if $\sigma_{(z_i ,t)}$ against $\Delta t$, and  $D_{(z_i)}$ is determined from the slope \cite{4}.
+          \item The unknown parameter $I_0$ is now adapted such that the distance-dependent diffusion coefficient $D_z$ coincide with the theoretical predictions from \cref{eq:d-perp-sheet} ($\eta$ and $a$ are known). From this follows the correct absolute particle wall distance for the potential.
+        \end{enumerate}
+        In the practice of the experiment, the described evaluation is implemented by a predetermined MatLab routine, in which only $I_0$ has to be adapted as a parameter.
 
 
 
