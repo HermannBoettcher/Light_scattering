@@ -83,66 +83,147 @@
       \section{Forces on the Particles}
       \label{sec:forces}
 
-        There are several forces affecting particles suspended in a solution. Most relevant for this experiment are the gravitational force, the electrostatic double layer force, the Van der Waals force and the light force (when using the optical tweezers).
+        There are several forces affecting particles suspended in a solution. Most relevant for this experiment are the gravitational, the electrostatic double layer, the Van der Waals and the light force (the latter when using the optical tweezers).
+        \medskip
+
         \textbf{Gravitational force:}\\
-        The particles interact with the gravitational field of the earth. If their density is higher then the density of the solution they are suspended in they sink to the bottom. In front of a wall were it is affected by a repulsive force a potential well forms.  The gravitational potential $V_\mathrm{G}$ can be described as:
+        The particles interact with the gravitational field of the earth. If their density is higher then the density of the solution that they are suspended in, the particles sink. In front of a wall were it is affected by a repulsive force a potential well forms ???.  The gravitational potential $V_\mathrm{G}$ can be described as:
         \begin{align}
-          V_\mathrm{G}=\frac{4\pi R^3}{3}g(\rho_p-\rho_m)z=F_\mathrm{G}z
+          V_\mathrm{G}=\frac{4\pi R^3}{3}g(\rho_\mathrm{p}-\rho_\mathrm{m})z=F_\mathrm{G}z
         \end{align}
-        with the density $\rho$ of the particle (p) and the medium (m), the earth acceleration $g$, the particles radius $R$ and the distance from the wall $z$.
+        with the density of the particle $\rho_\mathrm{p}$ and of the medium $\rho_\mathrm{m}$, the earth acceleration $g$, the particles radius $R$ and the distance from the wall $z$.
+        \medskip
+
         \textbf{Eletrostatic double layer force:}\\
-        The eletrostatic double layer force is the repulsion between particles with the same charge and between particles and the wall. If the particles are suspended in an electrolyte solution, as it is the case here, the Poisson equation describes the relation between the electrostatic potential $\Phi (\overrightarrow{r})$ and the elementary charge $e$.
-        \begin{align}
-          \Delta \Phi (\overrightarrow{r})=-\frac{e^2}{\epsilon k_B T}\rho(\overrightarrow{r})
-        \end{align}
-        With $e\rho(\overrightarrow{r})=e(\rho_+(\overrightarrow{r})+\rho_-(\overrightarrow{r}))$ with the Kation concentration ($\rho_+(\overrightarrow{r}$) and the Anion concentration ($\rho_-(\overrightarrow{r}$). If the two concentrations are symmetrical as it is the case for monovalent electrolytes (like K Br) the Poisson-Boltzmann-equation is
-        \begin{align}
-          \Delta \Phi= \kappa^2sinh\Phi,
-        \end{align}
-        with $\kappa=\sqrt{\frac{\beta e^2}{\epsilon}2\rho_+}=\sqrt{\frac{e^2}{\epsilon k_B T}\sum_i \rho_i z_i^2}$ as the inverse Debye length, with $z_i$ as the ion charge and $r\in G$, with $G$ as the area which is not particle or surface. With the surface-charge-density for particles $\sigma_p$ and wall $\sigma_w$ and $z$ as the distance between particle surface and wall we get
-        \begin{align}
-          \beta V_{dl}(z)=\frac{64\pi \epsilon a}{\beta e^2} \gamma_p \gamma_w e^{-\kappa(z)} \\
-          \gamma_{w/p}=tanh[\frac{1}{2}\sinh^{-1} \left(\frac{\beta e \sigma_{w/p}}{2\epsilon \kappa}\right).
-        \end{align}
+        The eletrostatic double layer force accounts for the repulsion between particles with the same charge and attraction between those particles of opposite charge. In this eperiment, it describes the interaction between particles and the wall. If the particles are suspended in an electrolyte solution, as is the case here, the Poisson equation describes the relation between the electrostatic potential $\Phi (\vec{r})$ and the elementary charge $e$, $\vec{r}$ being the distance between the two interacting particles. The equation is given by
+        \begin{align*}
+          \Delta \Phi (\vec{r})=-\frac{e^2}{\epsilon k_\mathrm{B} T}\underbrace{\rho_+(\vec{r}+\rho_-(\vec{r}}_{\rho}(\vec{r}),
+        \end{align*}
+        where $\rho_+(\vec{r})$ ist the cation and $\rho_-(\vec{r})$ the anion concentration, $\epsilon$ the permittivity, $k_\mathrm{B}$ the Boltzmann constant and $T$ the temperature.
+
+        If the two concentrations are symmetrical, as is the case for monovalent electrolytes like KBr, the Poisson-Boltzmann equation takes the form
+        \begin{align*}
+          \Delta \Phi= \frac{\beta e^2}{\epsilon}2\rho_+ \cdot\sinh\Phi= \underbrace{\frac{e^2}{\epsilon k_\mathrm{B} T}\sum_i \rho_i q_i^2}_{=\kappa^2} \cdot \sinh\Phi
+        \end{align*}
+        using the inverse Debye length $\kappa$, with $q_i$ as the ion charge and $r\in G$, $G$ being the area which is not particle or surface ???. Introducing the surface charge density of the particles particles $\sigma_\mathrm{p}$ and of the wall $\sigma_\mathrm{w}$ and $z$ as the distance between particle surface and wall yields
+        \begin{align*}
+          \beta V_{dl}(z)=\frac{64\pi \epsilon a}{\beta e^2} \gamma_p \gamma_w e^{-\kappa(z)}, \\
+          \gamma_\mathrm{w/p}=\tanh \left[ \frac{1}{2}\sinh^{-1}  \left( \frac{\beta e \sigma_\mathrm{w/p}}{2\epsilon \kappa } \right) \right].
+        \end{align*}
+        $\beta$ ???
+        \medskip
+
         \textbf{Van der Waals force:}\\
-        In comparison to the previously described electrostatic force the Van der Waals force is much weaker. It is also mostly attractive in nature. Microscopically it stems from the interactions between the fluctuating dipolmoments of the particles. Integration of the particle-particle and the particle-wall Van der Waals force over the sphere wall symmetry of this experiment provides
+        In comparison to the previously described electrostatic force, the Van der Waals force is much weaker. Moreover, it occurs mostly as an attractive force in nature. Microscopically, it is derived from the interactions between the fluctuating dipolmoments of the particles. Integration of the particle-particle and the particle-wall Van der Waals force over the sphere wall symmetry of this experiment provides
         \begin{align}
-          \beta V_{disp}(z)=\frac{A(z)}{6k_B T}(\frac{2R}{z}\frac{z+R}{z+2R}-log\frac{z+2R}{z}),
+          \beta V_{disp}(z)=\frac{A(z)}{6k_B T}(\frac{2R}{z}\frac{z+R}{z+2R}-\log\frac{z+2R}{z}),
         \end{align}
-        with the distance between particle surface and wall $z$, $R$ the particle radius and $A(z)$ as the Hamakerconstant.
+        log oder ln ????
+        with the distance between particle surface and wall $z$, $R$ the particle radius and $A(z)$ the Hamaker constant.
+        \medskip
+
         \textbf{Light force with optical tweezers:}\\
-        To counteract some of the previously mentioned forces optical tweezers can be used to hold particles in place, by utilizing the light force. The light force is the impulses of photons that are transferred to the particle when it absorbs or reflects the photons.
-        The simplest case is if the light force or any other one directional force. For gravitation the light beam shines from below with the light force $L_{light}=L_{grav}$. But optical tweezers/traps can also hold dielectric particles in place against forces perpendicular to the light beam. For this a slightly focused laser beam is utilized and the particle is held in the focus point. This is shown in \ref{fig:tweezer}.
+        Counteracting some of the previously mentioned forces, optical tweezers can be used to hold particles in place by utilizing the light force. The light force accounts for the impulses of the icident photons being transferred to the particle when absorbing or reflecting the photons.
+
+        To keep it simple, a one dimensional system is regarded. The graviational force acting in negative $x$-direction $vec{F}_\mathrm{G}^x$ can be counteracted by light force in positive $x$-direction $\vec{F}_\mathrm{L}^x$ to keep a particle floating at $x=x_0=const.$ yielding
+        \begin{equation*}
+          \vec{F}_\mathrm{G}^x=-\vec{F}_\mathrm{L}^x.
+        \end{equation*}
+        But optical tweezers can also hold dielectric particles in place against forces perpendicular to the light beam. To this end, a slightly focalised laser beam is utilized which holds the particle in the focus point as illustrated in \ref{fig:tweezer}.
 
         \begin{figure}[tb]
           \centering
           \includegraphics[width=0.5\textwidth]{figures/opticaltweezer}
-          \caption{Particle in an optical trap. The dielectric particle gravitates towards the beam center slightly above the beam waist.  %https://en.wikipedia.org/wiki/Optical_tweezers
-           }
+          \caption{Particle trapped by an optical tweezer. The dielectric particle gravitates towards the beam center slightly above the beam waist. \cite{wiki:optical-tweezers}}
            \label{fig:tweezer}
         \end{figure}
-        The force which moves the particle towards the beam center is called the gradient force. But it only moves the particle towards the center, if the refractive index of the particle is larger then the one of the solution in which it is held. Because, if this is the case and there is and intensity gradient, the gradient force moves the particle towards the point of the highest intensity. Similar to a dielectric being sucked into a capacitor. With a strong focus point it is also possible of the gradient force to override the light force. For optical tweezers in $x$- and $y$-direction the potentials are:
+
+        The force which moves the particle towards the beam's center is called the gradient force. It only moves the particle towards the center if the refractive index of the particle is larger then the one of the solution in which the particle is suspended, though. If this is the case and there is an intensity gradient, the gradient force moves the particle towards the point of the highest intensity. The procces is similar to a dielectric being sucked into a capacitor. With a strong focus point it is also possible for the gradient force to override the light force ???. For optical tweezers in $x$- and $y$-direction the potentials are
         \begin{align}
-          V_{grad,x}(x)=C_xPx^2\\
-          V_{grad,y}(y)=C_yPy^2
+          V_{\nabla,x}(x)=C_xPx^2\\
+          V_{\nabla,y}(y)=C_yPy^2
         \end{align}
         with the laser power $P$ and the parameter $C$ depending on particle size, focus radius, refractive indexes and more. \\
         Finally, for the $z$ direction the light force and the gravitational force add up to
         \begin{align}
-          V_{Geff}=V_{Light}+V_{G}=F_{Light}+F_{G} z= G_{eff} z.
+          F_\mathrm{G,eff}^z=F_\mathrm{L}^z+F_\mathrm{G}^z.
         \end{align}
-
-
 
 
       \section{Evanescent Field}
       \label{sec:evanenscent}
 
+        %dissertation helden
+        To analyze the position fluctuations of the particles in the aqueous dispersion, an evanescent field is utilized. An evanescent field is a field of any kind, were there is no net energy flow in any given direction. In this experiment, this is achieved by total reflection. \\
+        If  a lightbeam hits a transition between two media with the refraction indices $n_1$ for medium 1 and $n_2$ for medium 2 at the angle $\Theta_1$, part of it is refracted with the angle $\Theta_2$ and part of it is reflected with the angle $\Theta_1$. This relation is described by snells law
+        \begin{equation*}
+          n_1 \sin(\Theta_1)=n_2 \sin(\Theta_2).
+        \end{equation*}
+        If $n_1>n_2$, there is a critical angle $\Theta_c$ at which all the light is reflected and non of it transmits into medium 2 with
+        \begin{align*}
+          \Theta_c=\arcsin\left(\frac{n_2}{n_1}\right).
+        \end{align*}
+        Still, an exponentially decaying field component of the incident wave enters the second medium. As it decays exponentially, there is no energy flow and it is therefore an evanescent wave. The resulting field distribution in Medium 2 is given by
+        \begin{align*}
+          E_r=E_0 \exp\left( -\frac{\beta}{2}z \right) \exp\left( i\frac{n_1}{n_2}\sin(\Theta_1)kx-i\omega t \right),
+        \end{align*}
+        $2/\beta$ being the characteristic decay length. This means that the wave decays with $\beta^{-1}$ in the medium and this decay is defined as
+        \begin{align*}
+          \beta^{-1}=\frac{\lambda_0}{4 \pi \sqrt{n_1^2 \sin^2\Theta_1-n_2^2}},
+        \end{align*}
+        which shows that the penetration depth diverges at the critical angle $(\Theta_1=\Theta_c)$ and the minimum penetration depth is
+        \begin{equation*}
+          \beta^{-1}=\frac{\lambda_0}{4 \pi \sqrt{n_1^2-n_2^2}}.
+        \end{equation*}
+
+
       \section{Determination of the potential form}
       \label{sec:determination}
 
+      The scattering intensity $I(z)$ depends, in the following manner, on the distance $z$ between the particle and the wall:
+      \begin{align}
+        \begin{split}
+          I(z)=I_0\exp\left( -\beta z \right) \leftrightarrow z&=-\beta^{-1}\ln\left(\frac{I_z}{I_0}\right)\\
+          &=-\beta^{-1}\ln I(z) + \underbrace{\beta^{-1}\ln I_0}_{=z_0}
+        \end{split}
+        \label{eq:I-von-z}
+      \end{align}
+      Where $\beta^{-1}$ is the penetration depth of the evanescent field and $I_0$ is the scatter intensity that results when particles and wall are in direct contact. Without knowing this constant, only relative distances can be determined, since $z_0$ can not be computed. The absolute distance is determined hydrodynamically in the second section of the evaluation; here $I_0 = 10$ is assumed arbitraily. The Boltzmann equation combines the distance-dependent probability distribution $p(z)$ with the interaction potential $V(z)$ between particle and wall:
+      \begin{equation*}
+        p(z)=p_0\exp\left( -\frac{V(z)}{k_\mathrm{B}T}\right) \leftrightarrow \frac{V(z)}{k_\mathrm{B}T}=-\ln\left(\frac{p(z)}{p_0}\right)
+      \end{equation*}
+      The distance-dependant probability distribution is calculated using \cref{eq:I-von-z}, and can then be converted into en intensity probability distribiution $N(I)$:
+      \begin{equation*}
+        p(z)=N(I)\frac{\mathrm{d}I}{\mathrm{d}z}=-\beta N(I)I(z),
+      \end{equation*}
+      where $N(I)$ is obtained directly from the measured data as a histogram. The resulting potential is then
+      \begin{equation}
+        \frac{V(z)}{k_\mathrm{B}T}=-\ln\left(\frac{-\beta N(I)I(z)}{p_0}\right)=-\ln\left[ N(I)I(z) \right]+\ln\left( -\frac{p_0}{\beta}\right).
+        \label{eq:potential}
+      \end{equation}
+      Before creating the histogram, the background must first be subtracted from the measured data. This corresponds to the scatter signal in the absence of the particle. For this purpose, the particle can be pulled out of the field of view with the optical tweezers and the background at the measuring position can be determined directly (approximately $\SI{10}{\second}$ to $\SI{30}{\second}$ measurement averaged). The number of bins in the histogram determines the number of potential values that are calculated. The error on the calculated potential value decreases with increasing number of counts per bin. Approximately 100 bins represent a good compromise between a small error of the individual potential values on the one hand and good local resolution on the other. \Cref{eq:potential} potential already has the correct shape, but not yet the correct absolute distance from the surface.
+
       \section{Hydrodynamic evaluation}
       \label{sec:hydrodynamic}
+
+      For the determination of the potential shape, only the probability distribution has so far been used. However, much more information is available in the measurement data. An analysis of the dynamics of the measured data provides information on the distance dependence of the diffusion coefficient and also allows the determination of the absolute distance. The 3D diffusion coefficient (far from the surface), $D_0$ is described by the Stokes-Einstein equation
+      \begin{equation*}
+        D_0=\frac{k_\mathrm{B}T}{6\pi\eta R},
+      \end{equation*}
+      where $\eta$ is the vescosity of the liquid and $R$ corresponds to the particule's radius. In the vincinity of a wall, where the liquid molecules can not move (stick boundary conditions), the diffusion coefficient becomes distance-dependent and anisotropic (compare \cref{subsec:brownian-wall}). The distance-dependent diffusion coefficient for diffusion perpendicular to the wall $D_\perp$ was calculated analytically by Brenner as an infinite series \cite{2}. This series can be approximated very well for small distances $z<R$ to
+      \begin{equation}
+        D_\perp = \frac{D_0}{\frac{R}{z}+0,2\ln\left(\frac{R}{z}\right) + 0,9712}.
+        \label{eq:d-perp-sheet}
+      \end{equation}
+      Considering the solution of the Langevin equation for a spherical particle near a wall, the distance-dependent diffusion coefficient can also be determined from the measured trajectory of the particle \cite{4}. To do this, the following procedure is applied:
+      \medskip
+
+      \begin{enumerate}
+        \item The measured intensity data are converted into distances, whereby an arbitrary value is initially assumed for the scatter intensity at the contact of particle and wall ($I_0$ in \cref{eq:I-von-z}). The maximum input voltage of the A/D card of $\SI{10}{\volt}$ is for example a realistic starting value for $I_0$.
+        \item For the analysis of the dynamics, the measured trajectory is divided into about 20 intervals $a_j$ . For each $a_j$ , a histogram of the distance changes $\Delta z_i$ is generated within a certain time interval $\Delta t$. That under the condition that the $i$-th distance value $z_i$ measured in the trajectory is in the interval $a_j$, $z_i = z_{i+k} - z_i$ is calculated and entered into the histogram. The time interval $t = k \delta t_\mathrm{mess}$ is necessarily an integer multiple of the measurement interval $\delta t_\mathrm{mess}$ and $k = 1,2$, in order not to average over too long time intervals. Neglecting the effects of the interaction potential (curvature), a Gaussian distribution of $p$ the distance changes is to be expected, whose width is $\sigma_{z_i ,\Delta t} = \sqrt{2D_{z_i} \Delta t}$. In principle, $D_{(z_i)}$ can already be determined from the fit parameter $\sigma_{(z_i,t)}$ for a certain $\Delta t$. However, a smaller measurement error is obtained if $\sigma_{(z_i ,t)}$ against $\Delta t$, and  $D_{(z_i)}$ is determined from the slope \cite{4}.
+        \item The unknown parameter $I_0$ is now adapted such that the distance-dependent diffusion coefficient $D_z$ coincide with the theoretical predictions from \cref{eq:d-perp-sheet} ($\eta$ and $a$ are known). From this follows the correct absolute particle wall distance for the potential.
+      \end{enumerate}
+      In the practice of the experiment, the described evaluation is implemented by a predetermined MatLab routine, in which only $I_0$ has to be adapted as a parameter.
 
 
 
