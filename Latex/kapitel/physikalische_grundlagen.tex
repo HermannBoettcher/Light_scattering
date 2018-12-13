@@ -4,36 +4,107 @@
 
 \chapter{Physical background}
 
+
+  \section{Forces on the particles}
+  \label{sec:forces}
+
+    There are several forces affecting particles suspended in a solution. Most relevant for this experiment are the gravitational, the electrostatic double layer, the Van der Waals and the light force (the latter when using the optical tweezers).
+    \medskip
+
+    \textbf{Gravitational force:}\\
+    The particles interact with the gravitational field of the earth. If their density is higher than the density of the solution that they are suspended in, the particles sink. In front of a wall, where the individual particle is affected by a repulsive force, a potential well forms.  The gravitational potential $V_\mathrm{G}$ can be described as
+    \begin{align}
+    V_\mathrm{G}=\frac{4\pi R^3}{3}g(\rho_\mathrm{p}-\rho_\mathrm{m})z=F_\mathrm{G}z,
+    \end{align}
+    with the density of the particle $\rho_\mathrm{p}$ and of the medium $\rho_\mathrm{m}$, the earth acceleration $g$, the particles radius $R$ and the distance from the wall $z$.
+    \medskip
+
+    \textbf{Eletrostatic double layer force:}\\
+    The eletrostatic double layer force accounts for the repulsion between particles with the same charge and attraction between those particles of opposite charge. In this experiment, it describes the interaction between particles and the wall. If the particles are suspended in an electrolyte solution, as is the case here, the Poisson equation describes the relation between the electrostatic potential $\Phi (\vec{r})$ and the elementary charge $e$, $\vec{r}$ being the distance between the two interacting particles. The equation is given by
+    \begin{align*}
+    \Delta \Phi (\vec{r})=-\frac{e^2}{\epsilon k_\mathrm{B} T}(\underbrace{\rho_+(\vec{r})+\rho_-(\vec{r})}_{\rho(\vec{r})},
+    \end{align*}
+    where $\rho_+(\vec{r})$ ist the cation and $\rho_-(\vec{r})$ the anion concentration, $\epsilon$ the permittivity, $k_\mathrm{B}$ the Boltzmann constant and $T$ the temperature.
+
+    If the two concentrations are symmetrical, as is the case for monovalent electrolytes like KBr, the Poisson-Boltzmann equation takes the form
+    \begin{align*}
+    \Delta \Phi= \frac{\beta e^2}{\epsilon}2\rho_+ \cdot\sinh\Phi= \underbrace{\frac{e^2}{\epsilon k_\mathrm{B} T}\sum_i \rho_i q_i^2}_{=\kappa^2} \cdot \sinh\Phi
+    \end{align*}
+    using the inverse Debye length $\kappa$, with $q_i$ as the ion charge and $r\in G$, $G$ being the area which is neither particle nor surface. Introducing the surface charge density of the particles particles $\sigma_\mathrm{p}$ and of the wall $\sigma_\mathrm{w}$ and $z$ as the distance between particle surface and wall yields
+    \begin{align*}
+    \beta V_{dl}(z)=\frac{64\pi \epsilon a}{\beta e^2} \gamma_p \gamma_w e^{-\kappa(z)}, \\
+    \gamma_\mathrm{w/p}=\tanh \left[ \frac{1}{2}\sinh^{-1}  \left( \frac{\beta e \sigma_\mathrm{w/p}}{2\epsilon \kappa } \right) \right],
+    \end{align*}
+    with $\beta=1/k_\mathrm{B} T$ as known from thermodynamics.
+    \medskip
+
+    \textbf{Van der Waals force:}\\
+    In comparison to the previously described electrostatic force, the Van der Waals force is much weaker. Moreover, it occurs mostly as an attractive force in nature. Microscopically, it is derived from the interactions between the fluctuating dipolmoments of the particles. Integration of the particle-particle and the particle-wall Van der Waals force over the sphere wall symmetry of this experiment provides
+    \begin{align}
+    \beta V_{disp}(z)=\frac{A(z)}{6k_B T}\left(\frac{2R}{z}\frac{z+R}{z+2R}-\ln\frac{z+2R}{z}\right),
+    \end{align}
+    with the distance between particle surface and wall $z$, $R$ the particle radius and $A(z)$ the Hamaker constant.
+    \medskip
+
+    \textbf{Light force with optical tweezers:}\\
+    Counteracting some of the previously mentioned forces, optical tweezers can be used to hold particles in place by utilizing the light force. The light force accounts for the impulses of the icident photons being transferred to the particle when absorbing or reflecting the photons.
+
+    To keep it simple, a one dimensional system is regarded. The graviational force acting in negative $x$-direction $\vec{F}_\mathrm{G}^x$ can be counteracted by light force in positive $x$-direction $\vec{F}_\mathrm{L}^x$ to keep a particle floating at $x=x_0=const.$ yielding
+    \begin{equation*}
+    \vec{F}_\mathrm{G}^x=-\vec{F}_\mathrm{L}^x.
+    \end{equation*}
+    But optical tweezers can also hold dielectric particles in place against forces perpendicular to the light beam. To this end, a slightly focalised laser beam is utilized which holds the particle in the focus point as illustrated in \ref{fig:tweezer}.
+
+    \begin{figure}[tb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/opticaltweezer}
+    \caption{Particle trapped by an optical tweezer. The dielectric particle gravitates towards the beam center slightly above the beam waist. \cite{wiki:optical-tweezers}}
+     \label{fig:tweezer}
+    \end{figure}
+
+    The force which moves the particle towards the beam's center is called the gradient force. It only moves the particle towards the center, if the refractive index of the particle is larger then the one of the solution in which the particle is suspended, though. If this is the case and there is an intensity gradient, the gradient force moves the particle towards the point of the highest intensity. The procces is similar to a dielectric being sucked into a capacitor. With a strong focus point it is also possible for the gradient force to override the light force if they have opposite directions. For optical tweezers in $x$- and $y$-direction the potentials are
+    \begin{align}
+    V_{\nabla,x}(x)=C_xPx^2\\
+    V_{\nabla,y}(y)=C_yPy^2
+    \end{align}
+    with the laser power $P$ and the parameter $C$ depending on particle size, focus radius, refractive indices and more. \\
+    Finally, for the $z$ direction the light force and the gravitational force add up to
+    \begin{align}
+    F_\mathrm{G,eff}^z=F_\mathrm{L}^z+F_\mathrm{G}^z.
+    \end{align}
+    \cite{helden}
+
     \section{Brownian motion}
     \label{sec:brownian-motion}
 
       The motion of particles suspended in a fluid resulting from their collision with fast moving molecules (or atoms) of the fluid is called the \textit{Brownian motion}.
 
-      Within a fluid at thermal equilibrium at a given temperature, no preferential direction of flow exists. Therefore, the movement the fluid's molecules is random yielding no linear or angular momenta over time. Suffieciently small particles suspended in this fluid move in random patterns, too, changing its velocity $\vec{v}$ upon colliding with one of the fluid's molecules. As a matter of fact, the observation has been used as evidence for the existence of individual water (fluid) molecules.
+      Within a fluid in thermal equilibrium at a given temperature, no preferential direction of flow exists. Therefore, the movement of the fluid's molecules is random yielding no linear or angular momenta over time. Sufficiently small particles suspended in this fluid move in random patterns, too, changing their velocities $\vec{v}$ upon colliding with one of the fluid's molecules. As a matter of fact, the observation has been deemed evidence for the existence of individual water (fluid) molecules.
 
-      Because of the sheer number of involved fluid molecules, the many-body interactions resulting in the \textit{Brownian motion} cannot be solved relying only on classical mechanics. To put a number to it, the number of collisions of a single particle suspended in the fluid (a so called \textit{Brownian particels}) with the fluid molecules is roughly of the order $10^{14}$. Therefore, among other, Albert Einstein produced a probabilistic model using statistical mechanics. Einstein started by formulating a diffusion equation for the \textit{Brownian particels}. To this end, he regarded a one dimensional $x$-space with the origin at the initial position of the modelled \textit{Brownian particles}. Assuming the conservation of the number of fluid molecules and introducing the density function $\varphi(\Delta)$, with the random variable $\Delta$, he expanded the \textit{Brownian particle} density $\rho$ at a time $t + \tau$ in a Taylor series
+      Because of the sheer number of involved fluid molecules, the many-body interactions resulting in the \textit{Brownian motion} cannot be solved relying only on classical mechanics. To put a number to it, the number of collisions of a single particle suspended in the fluid (a so called \textit{Brownian particles}) with the fluid molecules is roughly of the order $10^{14}$. Therefore, among others, Albert Einstein produced a probabilistic model using statistical mechanics. Einstein started by formulating a diffusion equation for the \textit{Brownian particle}. To this end, he regarded a one dimensional $x$-space with the origin at the initial position of the modelled \textit{Brownian particles}. Assuming the conservation of the number of fluid molecules and introducing the density function $\varphi(\Delta)$, with the random variable $\Delta$, he expanded the \textit{Brownian particle} density $\rho$ at a time $t + \tau$ in a Taylor series
       \begin{align*}
         \rho (x,t) + \tau \pdv{\rho (x)}{t}+\cdots=\rho (x,t+\tau )&= \rho (x,t)\cdot \int_{-\infty}^{\infty} \varphi (\Delta )\mathrm{d}\Delta \\
         &=\rho(x,t)\cdot\int_{-\infty}^{\infty} \varphi (\Delta ) \mathrm{d}\Delta  -\pdv{\rho}{ x}\cdot \int_{-\infty}^\infty \Delta \varphi (\Delta )\mathrm{d} \Delta \\
         &\quad + \pdv[2]{\rho}{x}\cdot \int_{-\infty}^{\infty} \frac{\Delta^2}{2} \varphi (\Delta ) \mathrm{d} \Delta + \cdots \\
         &=\rho(x,t)\cdot 1 +0+\pdv[2]{\rho}{x}\cdot \int_{-\infty}^{\infty} \frac{\Delta^2}{2}\varphi(\Delta ) \mathrm{d}\Delta +\cdots.
       \end{align*}
-      While the integral in the second line equals one by definition of the probability, terms with even partials vanish due to symmetry of the 1D space. The above equation is equivalent to
+      While the integral in the second line equals one by definition of the probability, terms with even partials vanish due to symmetry of the 1D space. The above equation is leads to
       \begin{align}
         \pdv{\rho}{t}&\approx\pdv[2]{\rho}{x}\cdot \int_{-\infty}^{\infty} \frac{\Delta^2}{2\tau} \varphi ( \Delta) \mathrm{d}\Delta \nonumber  \\
         &=D\cdot \pdv[2]{\rho}{x}  \label{eq:diffusion-equation}
       \end{align}
-      if only terms with orders smaller than 2 of $\Delta$ are regarded and using the \textit{mass diffusivity} or \textit{diffusion coefficient}
+      if only terms of $\Delta$ with orders smaller than 2 are regarded and using the \textit{mass diffusivity} or \textit{diffusion coefficient}
       \begin{equation}
         D=\int_{-\infty}^{\infty} \frac{\Delta^2}{2\tau} \varphi ( \Delta) \mathrm{d}\Delta.
         \label{eq:diffusion-coefficient}
       \end{equation}
+      \cite{wiki:brownian-motion}
 
 
       \subsection{Brownian motion in proximity of the cavity walls}
       \label{subsec:brownian-wall}
 
-        In \cref{sec:brownian-motion}, only the fluid's molecules surrounding the \textit{Brownian particles} have been taken into account for the diffusion equation \cref{eq:diffusion-equation}. When the fluid is confined in a cavity though, the cavity's walls affects the flow of the fluid. This statement can be proven by simply regarding a fluid molecule or \textit{Brownian particle} next the cavity wall. It's motion'S component orthogonal to the wall is limited to one direction which is away from the wall. The interaction between the confining walls andthe particles is called \textit{hydrodynamic interaction}.
+        In \cref{sec:brownian-motion}, only the fluid's molecules surrounding the \textit{Brownian particles} have been taken into account for the diffusion equation \cref{eq:diffusion-equation}. When the fluid is confined in a cavity though, the cavity's walls affect the flow of the fluid. This statement can be proven by simply regarding a fluid molecule or \textit{Brownian particle} next the cavity wall. It's motion's component orthogonal to the wall is limited to one direction which is away from the wall. The interaction between the confining walls and the particles is called \textit{hydrodynamic interaction}.
 
         The mathematical description of this phenomenon makes use of distance $z$ dependent diffusion coefficients
         \begin{align}
@@ -73,81 +144,49 @@
          \end{figure}
 
 
-      \section{Forces on the Particles}
-      \label{sec:forces}
+        \subsection{Langevin equation}
 
-        There are several forces affecting particles suspended in a solution. Most relevant for this experiment are the gravitational, the electrostatic double layer, the Van der Waals and the light force (the latter when using the optical tweezers).
-        \medskip
+          A different approach to the \textit{Brownian motion} of colloidal particles respecting interactions with an interface makes use of the \textit{Langevin equation}. Herefore, the approach through  Langevin dynamics yields the equation
+          \begin{equation*}
+            \Delta \vec{r}=\frac{\vec{D}}{k_\mathrm{B}T}\cdot \vec{F}\Delta t+ \nabla \cdot \vec{D}\Delta t + \vec{X},
+          \end{equation*}
+          where $\vec{D}$ is the direction of motion dependent diffusion coefficient, $k_\mathrm{B}T$ the thermal energy, $\vec{F}$ the external force acting on the particle (comapre \cref{sec:forces}) and $\vec{X}$ is the Brownian contribution to $\Delta \vec{r}$. Moreover, $\vec{r}$ is the particles position and $\Delta t$ the time interval, which will be restricted later.
 
-        \textbf{Gravitational force:}\\
-        The particles interact with the gravitational field of the earth. If their density is higher then the density of the solution that they are suspended in, the particles sink. In front of a wall were it is affected by a repulsive force a potential well forms ???.  The gravitational potential $V_\mathrm{G}$ can be described as:
-        \begin{align}
-          V_\mathrm{G}=\frac{4\pi R^3}{3}g(\rho_\mathrm{p}-\rho_\mathrm{m})z=F_\mathrm{G}z
-        \end{align}
-        with the density of the particle $\rho_\mathrm{p}$ and of the medium $\rho_\mathrm{m}$, the earth acceleration $g$, the particles radius $R$ and the distance from the wall $z$.
-        \medskip
+          The change of the particles position due to external forces $\vec{F}$ is the so called \textit{drift}, which makes the first term on the righthand side the \textit{drift-term}. As the diffusion coefficient depends on the particle's position in proximity of interfaces, the second term can be identified as the \textit{gradient term}. Finally, the third term describes the contribution of the \textit{Brownian motion}. As during the conducted experiment the measured particles will be trapped by optical tweezers, only the the component perpendicular to the surface of the cuvette needs to be regarded. Therefore, the above equation is written in scalar form
+          \begin{equation}
+            \Delta h = \frac{D}{k_\mathrm{B}T}F \Delta t + \frac{\mathrm{d}D}{\mathrm{d}h}\Delta t + \Delta h_\mathrm{Brownian},
+            \label{eq:langevin-1d}
+          \end{equation}
+          $D$ and $F$ representing the normal components of the diffusion coefficient and the force vectors (regarding the surface of the cuvette), respectively, $\Delta h$ being the total change of distance between particle and the cuvette's wall during the time interval $\Delta t$.
+          \begin{equation*}
+            h_\mathrm{Brownian}=\chi \sqrt{2D\Delta t}
+          \end{equation*}
+           is therefore change of the distance between particle and interface due to the \textit{Brownian motion} during $\Delta t$, where $\chi$ is randomly chosen from a set of normally distributed numbers with a mean of zero and standard deviation of one. Using this identity, \cref{eq:langevin-1d} becomes
+           \begin{equation*}
+             \Delta h = \frac{D}{k_\mathrm{B}T}F\Delta t + \frac{\mathrm{d}D}{\mathrm{d}h}\Delta t + \chi \sqrt{2D\Delta t}.
+           \end{equation*}
+           For this equation to be physical, $\Delta t$ needs to be longer than the relaxation time of the \textit{Brownian fluctuations} and at the same time Sufficiently small as to be able to regard $D$ and $F$ as constant. Using $\Delta t \rightarrow 0 $ within these bounds, the \textit{Brownian term} is prominent as it only scales with $\sqrt{\Delta t}$, whereas the other two terms scale with $\Delta t$. This leads to $\Delta h$ being normally distributed with the variance
+           \begin{equation}
+             \sigma_{\Delta h}^2=2D\Delta t.
+             \label{eq:variance-simple}
+           \end{equation}
+           Regarding the case where $t\rightarrow \infty$, the \textit{Brownian motion} as a fluctuation does not change the particles' positions effectively. The potential well trapping the particle $\phi (h)$ becomes prominent. Therefore, the time dependent variance is given by
+           \begin{equation*}
+             \sigma_{\Delta h}^2=\sigma_{\Delta h, \infty}^2 \left[ 1-\exp\left( - \frac{2D\Delta t}{\sigma_{\Delta h, \infty}}\right)\right],
+           \end{equation*}
+           $\sigma_{\Delta h,\infty}$ being the variance at large times. This is in accordance with \cref{eq:variance-simple} when Taylor expanding around $\Delta t = 0$. As the variance should reach zero for $\Delta t \rightarrow \infty$, the probability of a particle with initial position $h_0$ to being found at $h_0 +\Delta h$ is concluded to be
+           \begin{equation*}
+              p(h_0+ \Delta h)=A\exp\left( \frac{-\phi (h_0+\Delta h)}{k_\mathrm{B}T}\right).
+           \end{equation*}
+           Here, $A$ is a normalization constant and $\phi ( h_0 + \Delta h)$ the potential energy of the particle at position $h_0 + \Delta h$. For the form of the potential, the forces mentioned in \cref{sec:forces} must be respected. \cite{walz}
 
-        \textbf{Eletrostatic double layer force:}\\
-        The eletrostatic double layer force accounts for the repulsion between particles with the same charge and attraction between those particles of opposite charge. In this eperiment, it describes the interaction between particles and the wall. If the particles are suspended in an electrolyte solution, as is the case here, the Poisson equation describes the relation between the electrostatic potential $\Phi (\vec{r})$ and the elementary charge $e$, $\vec{r}$ being the distance between the two interacting particles. The equation is given by
-        \begin{align*}
-          \Delta \Phi (\vec{r})=-\frac{e^2}{\epsilon k_\mathrm{B} T}\underbrace{\rho_+(\vec{r}+\rho_-(\vec{r}}_{\rho}(\vec{r}),
-        \end{align*}
-        where $\rho_+(\vec{r})$ ist the cation and $\rho_-(\vec{r})$ the anion concentration, $\epsilon$ the permittivity, $k_\mathrm{B}$ the Boltzmann constant and $T$ the temperature.
-
-        If the two concentrations are symmetrical, as is the case for monovalent electrolytes like KBr, the Poisson-Boltzmann equation takes the form
-        \begin{align*}
-          \Delta \Phi= \frac{\beta e^2}{\epsilon}2\rho_+ \cdot\sinh\Phi= \underbrace{\frac{e^2}{\epsilon k_\mathrm{B} T}\sum_i \rho_i q_i^2}_{=\kappa^2} \cdot \sinh\Phi
-        \end{align*}
-        using the inverse Debye length $\kappa$, with $q_i$ as the ion charge and $r\in G$, $G$ being the area which is not particle or surface ???. Introducing the surface charge density of the particles particles $\sigma_\mathrm{p}$ and of the wall $\sigma_\mathrm{w}$ and $z$ as the distance between particle surface and wall yields
-        \begin{align*}
-          \beta V_{dl}(z)=\frac{64\pi \epsilon a}{\beta e^2} \gamma_p \gamma_w e^{-\kappa(z)}, \\
-          \gamma_\mathrm{w/p}=\tanh \left[ \frac{1}{2}\sinh^{-1}  \left( \frac{\beta e \sigma_\mathrm{w/p}}{2\epsilon \kappa } \right) \right].
-        \end{align*}
-        $\beta$ ???
-        \medskip
-
-        \textbf{Van der Waals force:}\\
-        In comparison to the previously described electrostatic force, the Van der Waals force is much weaker. Moreover, it occurs mostly as an attractive force in nature. Microscopically, it is derived from the interactions between the fluctuating dipolmoments of the particles. Integration of the particle-particle and the particle-wall Van der Waals force over the sphere wall symmetry of this experiment provides
-        \begin{align}
-          \beta V_{disp}(z)=\frac{A(z)}{6k_B T}(\frac{2R}{z}\frac{z+R}{z+2R}-\log\frac{z+2R}{z}),
-        \end{align}
-        log oder ln ????
-        with the distance between particle surface and wall $z$, $R$ the particle radius and $A(z)$ the Hamaker constant.
-        \medskip
-
-        \textbf{Light force with optical tweezers:}\\
-        Counteracting some of the previously mentioned forces, optical tweezers can be used to hold particles in place by utilizing the light force. The light force accounts for the impulses of the icident photons being transferred to the particle when absorbing or reflecting the photons.
-
-        To keep it simple, a one dimensional system is regarded. The graviational force acting in negative $x$-direction $vec{F}_\mathrm{G}^x$ can be counteracted by light force in positive $x$-direction $\vec{F}_\mathrm{L}^x$ to keep a particle floating at $x=x_0=const.$ yielding
-        \begin{equation*}
-          \vec{F}_\mathrm{G}^x=-\vec{F}_\mathrm{L}^x.
-        \end{equation*}
-        But optical tweezers can also hold dielectric particles in place against forces perpendicular to the light beam. To this end, a slightly focalised laser beam is utilized which holds the particle in the focus point as illustrated in \ref{fig:tweezer}.
-
-        \begin{figure}[tb]
-          \centering
-          \includegraphics[width=0.5\textwidth]{figures/opticaltweezer}
-          \caption{Particle trapped by an optical tweezer. The dielectric particle gravitates towards the beam center slightly above the beam waist. \cite{wiki:optical-tweezers}}
-           \label{fig:tweezer}
-        \end{figure}
-
-        The force which moves the particle towards the beam's center is called the gradient force. It only moves the particle towards the center if the refractive index of the particle is larger then the one of the solution in which the particle is suspended, though. If this is the case and there is an intensity gradient, the gradient force moves the particle towards the point of the highest intensity. The procces is similar to a dielectric being sucked into a capacitor. With a strong focus point it is also possible for the gradient force to override the light force ???. For optical tweezers in $x$- and $y$-direction the potentials are
-        \begin{align}
-          V_{\nabla,x}(x)=C_xPx^2\\
-          V_{\nabla,y}(y)=C_yPy^2
-        \end{align}
-        with the laser power $P$ and the parameter $C$ depending on particle size, focus radius, refractive indexes and more. \\
-        Finally, for the $z$ direction the light force and the gravitational force add up to
-        \begin{align}
-          F_\mathrm{G,eff}^z=F_\mathrm{L}^z+F_\mathrm{G}^z.
-        \end{align}
 
 
       \section{Evanescent field}
       \label{sec:evanenscent}
 
         To analyze the position fluctuations of the particles in the aqueous dispersion, an evanescent field is utilized. An evanescent field is a field of any kind, were there is no net energy flow in any given direction. In this experiment, this is achieved by total reflection. \\
-        If  a lightbeam hits a transition between two media with the refraction indices $n_1$ for medium 1 and $n_2$ for medium 2 at the angle $\Theta_1$, part of it is refracted with the angle $\Theta_2$ and part of it is reflected with the angle $\Theta_1$. This relation is described by snells law
+        If  a lightbeam hits a transition between two media with the refraction indices $n_1$ for medium 1 and $n_2$ for medium 2 at the angle $\Theta_1$, part of it is refracted at the angle $\Theta_2$ and part of it is reflected at the angle $\Theta_1$. This relation is described by Snell's law
         \begin{equation*}
           n_1 \sin(\Theta_1)=n_2 \sin(\Theta_2).
         \end{equation*}
@@ -155,7 +194,7 @@
         \begin{align*}
           \Theta_c=\arcsin\left(\frac{n_2}{n_1}\right).
         \end{align*}
-        Still, an exponentially decaying field component of the incident wave enters the second medium. As it decays exponentially, there is no energy flow and it is therefore an evanescent wave. The resulting field distribution in Medium 2 is given by
+        Still, an exponentially decaying field component of the incident wave enters the second medium. As it decays exponentially, there is no energy flow and it is therefore an evanescent wave. The resulting field distribution in medium 2 is given by
         \begin{align*}
           E_r=E_0 \exp\left( -\frac{\beta}{2}z \right) \exp\left( i\frac{n_1}{n_2}\sin(\Theta_1)kx-i\omega t \right),
         \end{align*}
