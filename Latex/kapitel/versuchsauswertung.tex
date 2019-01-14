@@ -37,11 +37,11 @@
     \label{sec:data-analysis}
 
        The $I_0$ values are determined by a trial and error method.
-       We plotted:
+       We plotted
        \begin{align*}
          I(z)&=I_0 \exp\left( -\beta z \right)
        \end{align*}
-       for different $I_0$ values and compared it to our measured I(z) date as seen in \cref{eq:I0determination}.
+       for different $I_0$ values and compared it to our measured $I(z)$ date as seen in \cref{eq:I0determination}.
 
         \begin{figure}[tb]
               \centering
@@ -50,7 +50,7 @@
               \label{fig:I0determination}
         \end{figure}
 
-        The $I_0$ value were both plots are the closest to each other is chosen. With this set of diagrams we determined the $I_0$ value for the $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ data-set. This was the best looking data-set for $I_0$ determination,but to not cause any confusion, the measurements conducted for $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ did not yield any usable results. There are a lot of \textit{nan} values in the data set, which could therefore not be processed as the other sets. This might be due to the particle being lost from time to time. It is not really clear, as the particle has been observed most of the time of the measurement.
+        The $I_0$ value were both plots are closest to each other is selected. With this set of diagrams the $I_0$ value for the $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ data-set is determined. This was the best looking data-set for $I_0$ determination,but to not cause any confusion, the measurements conducted for $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ did not yield any usable results. There are a lot of \textit{nan} values in the data set, which could therefore not be processed as the other sets. This might be due to the particle being lost from time to time. It is not really clear, as the particle has been observed most of the time of the measurement.
         \medskip
 
       In the following, the step by step evaluation is written down for a new exemplary measurement data set, but $I_0$ is determined by the same process. To this end, the measurement with the optical tweezers voltage $U=\SI{0,70}{\volt}$ is analyzed in detail.  The other measurements are analyzed analogously and therefore,only the results will be presented for each step.
@@ -72,7 +72,16 @@
 
       \medskip
 
-      The computed potential $V(z)$ of the measurements is illustrated in \cref{fig:potential-with-fits-70} Using the potential's minimum as a breakpoint, it can be divided into two overlaying potentials: An exponential potential for the sharp drop at the beginning, and a linear rising after the minimum signifying the gravitational and the light force. The so divided sections of the potential are fitted with an exponential and a linear curve:
+      The potential form is now computed with a given matlab code snippet. First, it extracts the recorded data and plots it twice: Once as a intensity over time plot, and once as a distance over time plot (compare the two plots on the lefthandside of \cref{fig:pot-deriv}). Then, the data points are binned into intensity and distance bins respectively. The potential is then proportional to the negative logarithm of the distance histogram over the distance axis.
+
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\textwidth]{figures/75intensity_trajectory.pdf}
+        \caption{Binning of intensity over time and distance over time data as an intermediate step to computing the potential form.}
+        \label{fig:pot-deriv}
+      \end{figure}
+
+      The computed potential $V(z)$ of the measurements is illustrated in \cref{fig:potential-with-fits-70}. Using the potential's minimum as a breakpoint, it can be divided into two overlaying potentials: An exponential potential for the sharp drop at the beginning, and a linear rising after the minimum signifying the gravitational and the light force. The so divided sections of the potential are fitted with an exponential and a linear curve:
       \begin{align}
         \begin{split}
           V_\mathrm{exp}(z) &= a\cdot \exp\left( -b z \right) + c \\
@@ -83,10 +92,10 @@
       A small data modification needs to be done yet: The potential data is derived from a histogram that sorts by intervals of the Boltzmann distribution. Therefore, the potential data points at high distance values contain only few scattered photons and can therefore be neglected. All in all, the selection of the interval to be fitted with a linear fit is more or less an approximation o the authors to reach the wanted results. These results are plotted in \cref{fig:potential-with-fits-70} along with the potential itself.
 
       At this point, the data of $I_\mathrm{tweezers}=\SI{0}{\volt}$ is used, to determine the gravitational potential. Because in the respective potential, there is no light force to be had since the laser has been turned off during the experiment, the linear part manifests only due to the gravitational potential. Taking the gradient of this potential, which is simply the slope of the fit in this case, the gravitation force on the particle is derived to be
-      \begin{equation*}
-        F_\mathrm{gravitational}^\mathrm{experimental}\approx\SI{3,9e-13}{\newton}\approx \SI{4,0e-13}{\newton}=\frac{4}{3}\pi r_\mathrm{particle}^3= \rho_\mathrm{Polysterene}*g=F_\mathrm{gravitational}^\mathrm{theoretical},
-      \end{equation*}
-      where $g=\SI{9,81}{\meter\per\square\second}$ is the gravitational acceleration on earth's surface, $r_\mathrm{particle}=\frac{a}{2}=\SI{2,14e-6}{\meter}$ the particle's radius and $\rho_\mathrm{Polysterene}$ the mass density of polysterene. Since the fit intervall has been optimized to hit close to the theoretical value, there is no way of approximating the uncertainties. The fit parameter error is only a very small secondary error. What could be done for a more precise evaluation is to weigh the different data points using the values of the histogram used to derive the potential form or even using the Boltzmann distribution as a weight.
+      \begin{align*}
+        F_\mathrm{grav}^\mathrm{exp}\approx\SI{1,3e-13}{\newton}\approx \SI{2,0e-14}{\newton} / 10=\frac{4}{3}\pi r_\mathrm{particle}^3 (\rho_\mathrm{pol}-\rho_\mathrm{\ce{H2O}})*g*10=F_\mathrm{grav}^\mathrm{theo}*10,
+      \end{align*}gravitational
+      where $g=\SI{9,81}{\meter\per\square\second}$ is the gravitational acceleration on earth's surface, $r_\mathrm{particle}=\frac{a}{2}=\SI{2,14e-6}{\meter}$ the particle's radius and $\rho_\mathrm{pol/\ce{H2O}}$ are the mass densities of polysterene and water. To convert from units in $k_\mathrm{B}T$ to $\si{\newton}$, the room temperature has been approximated by $T=\SI{300}{\kelvin}$. Since the fit intervall has been optimized to hit close to the theoretical value, there is no way of approximating the uncertainties. So there is a factor of $1/10$ missing for the experimental value. Since, talking experiments, the derivation of the gravitational force is very easy, there must be a mistake within these evaluations. For now, the evaluation shall be continued with the incorrect value. The fit parameter error is only a very small secondary error. What could be done for a more precise evaluation is to weigh the different data points using the values of the histogram used to derive the potential form or even using the Boltzmann distribution as a weight.
       \medskip
 
       The light force of the other measurements is now determined by subtracting the linear fit of $I_\mathrm{tweezers}=\SI{0}{\volt}$ from the other linear fits, in explanation
@@ -103,7 +112,7 @@
       As a result, expectations are that the linear part of the potentials becomes steeper for higher voltages of $U_\mathrm{tweezers}$. \Cref{fig:potentials} shows the comparison of all the measured potentials. As a matter of fact, the expectations are not satisfied by that comparison. The potentials' forms are seem to be disturbed too much to yield a clear tendency. Maybe bigger steps of $U_\mathrm{tweezers}$ would yield a more suggestive image.
       \medskip
 
-      \begin{figure}[tb]
+      \begin{figure}[htb]
         \centering
         \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/light_forces.pdf} \label{fig:light-forces}}
         \hfill
@@ -113,7 +122,7 @@
 
       Finally, \cref{fig:two-blocks} shows the influence of the penetration depth of the evanescent field. Both measurements have been conducted at approximately the same tweezers voltage $U_\mathrm{tweezers}=\SI{0,76}{\volt}\approx \SI{0,75}{\volt}$. The penetration depth has been varied by changing the incident angle of the red laser onto the prism. The only significant difference between the two potentials is the shift to higher distances for the smaller penetration depth.
 
-      \begin{figure}[tbh]
+      \begin{figure}[htb]
         \centering
         \includegraphics[width=0.45\textwidth]{figures/potentials12.pdf}
         \caption{Comparison of the potentials derived from two measurements when varying the penetration depth of the evanescent field.}

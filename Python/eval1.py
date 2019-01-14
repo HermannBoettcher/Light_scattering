@@ -64,7 +64,7 @@ figure_70.savefig('70_potential.pdf')
 
 exp_pot_65 = data[:, :min_index[7]]
 lin_pot_65 = data[:, min_index[7]:]
-print(lin_pot_65[6])
+#print(lin_pot_65[6])
 stop_index = np.argwhere(lin_pot_65[6] == 4.13e-08)
 lin_pot_65 = lin_pot_65[:,:stop_index[0][0]]
 
@@ -141,8 +141,8 @@ figure_75.savefig('75_potential.pdf')
 
 exp_pot_0 = data[:, :min_index[11]]
 lin_pot_0 = data[:, min_index[11]:]
-#print(lin_pot_0[10])
-stop_index = np.argwhere(lin_pot_0[10] == 5.33e-08)
+print(lin_pot_0[10])
+stop_index = np.argwhere(lin_pot_0[10] == 3.69e-08)
 lin_pot_0 = lin_pot_0[:,:stop_index[0][0]]
 
 popt0, pcov0 = curve_fit(linear_func, lin_pot_0[10], lin_pot_0[11], p0=(1, 1))
