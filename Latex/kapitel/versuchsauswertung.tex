@@ -2,840 +2,95 @@
 
 \begin{document}
 
-  \chapter{Versuchsdurchführung und -auswertung}
+  \chapter{The Experiment}
 
-    Der experimentelle Aufbau besteht aus einem frequenzverdoppelten Nd:YAG-Laser der Laserklasse 4, welcher auf eine Glasphiole fokussiert ist, welche wiederum die zu untersuchende Probe enthält. Das entstehende Streulicht (nicht der Laserstrahl selbst) wird mit einer Sammellinse auf ein Spektrometer (CCD-Sensor) kollimiert. Hierbei können ein Polarisationsfilter und ein drehbar montierter Kerbfilter zwischengeschaltet werden.
+    \section{Experimental setup and conduction}
+    \label{sec:exp-setup}
 
-
-    \section{Vorbereitende Messungen}
-
-      Zur Auswertung der erfassten Daten sind einige vorbereitende Messungen notwendig. Das Dunkelspektrum muss berücksichtigt, das Spektrometer kalibriert und dessen Linearität überprüft und der Einfluss des Kerbfilters betrachtet werden.
-
-
-      \subsection{Dunkelspektrum}
-
-        Durch eine Messung ohne eingeschalteten Laser fällt auf, dass das Spektrometer bereits Signale aufzeichnet, das sogenannte Dunkelspektrum. Dies liegt in diesem Falle nicht am Streulicht anderer Lichtquellen im Raum, wie durch das Ausbleiben von Veränderungen im Signal während dem Ein- und Ausschalten von prominenten Lichtquellen wie der Deckenleuchte leicht bewiesen werden kann. Vielmehr kommt es in der Ladungsträgerzone der Dioden zu spontanen Elektron-Loch-Paar-Bildungen, welche als Photonen registriert werden. Mit dem zur Auswertung verwendeten Programm wird deshalb bei jeder Änderung der Integrationszeit während der Versuche ein neues Dunkelspektrum aufgezeichnet, das heißt mit geblocktem Laserstrahl einmal die Integrationszeit durchlaufen. Dieses Dunkelspektrum subtrahiert das Programm dann von jedem weiteren aufgenommenen Spektrum automatisch, sodass der Untergrund weitgehend bereinigt ist.
-
-
-      \subsection{Kalibrierung des Spektrometers}
-      \label{subsec:kalibrierung}
-
-        \begin{figure}[htb]
-          \centering
-          \tikzsetnextfilename{hg_he_spektren}
-          \begin{tikzpicture}
-            \begin{axis}[
-              /tikz/line join=bevel,
-              width=0.8*\textwidth,
-              height=0.5*\textwidth,
-              grid,
-              legend style={at={(1,1)}, legend columns=1, anchor=north east},
-              every axis plot,
-              xmin = 490, xmax = 680,
-              %ymin = \Pmin, ymax = \Pmax,
-              xlabel = {Wellenlänge $\lambda$ in $\si{\nano\meter}$},
-              ylabel = {Zählrate $n$},
-              /pgf/number format/use comma,
-              /pgf/number format/1000 sep={},
-              ]
-              % Add plots
-              \addplot[color=red!30, only marks, line width = 0.5pt, mark options={scale=0.2}] table [x=lambda,y=n]{data/hg_spektrum_fit.txt};
-              \addlegendentry{Hg data points}
-              \addplot[color=red, line width = 0.5pt] table [x=lambda,y=fit]{data/hg_spektrum_fit.txt};
-              \addlegendentry{Hg fit}
-              \addplot[color=blue!30, only marks, line width = 0.5pt, mark options={scale=0.2}] table [x=lambda,y=n]{data/he_spektrum_fit.txt};
-              \addlegendentry{He data points}
-              \addplot[color=blue, line width = 0.5pt] table [x=lambda,y=fit]{data/he_spektrum_fit.txt};
-              \addlegendentry{He fit}
-            \end{axis}
-          \end{tikzpicture}
-          \caption{}
-          \label{fig:hg-he-spektren}
-        \end{figure}
-
-        Um die Wellenlängen-, bzw. Frequenz-Kalibrierung des Spektrometers zu prüfen und gegebenenfalls zu korrigieren werden zwei Messungen mit in der Literatur hinreichend präzise charakterisierten Lichtquellen durchgeführt. Hierbei ist keine Probe im Strahlengang positioniert. Die aufgezeichneten Spektren einer Quecksilberdampflampe und einer Heliumlampe sind in \cref{fig:hg-he-spektren} abgebildet.  Die charakteristischen Linien treten hier verbreitert in Erscheinung. Es liegen die Dopplerverbreiterung, die Verbreiterung durch die natürliche Linienbreite, sowie die linear mit dem Dampfdruck ansteigende Druckverbreiterung vor. Prominent ist hierbei die Dopplerverbreiterung. Wegen der gaussförmigen Maxwell-Boltzmann-Verteilung der Geschwindigkeit der Gasatome können die verbreiterten Linien zu Bestimmung der Position der Maxima mit Gaussfits approximiert werden. Diese sind ebenfalls in \cref{fig:hg-he-spektren} aufgetragen. Die so gemessenen Linienpositionen mitsamt der aus \cite{NIST_ASD} entnommenen Literaturwerte sind in \cref{tbl:charakteristische-linien} aufgeführt. Die bei den experimentellen Werten angegebenen Unsicherheiten sind lediglich die Fehler der Fitparameter. Diese sind natürlich deutlich zu klein, wenn die  Messunsicherheiten der verwendeten Geräte selbst noch respektiert werden. Dementsprechend stimmen die gemessenen Wellenlängen der charakteristischen Linien der Lichtquellen, vor Allem unter Berücksichtigung der Breite der Gaussglocken, hinreichend präzise mit den Literaturwerten überein. Es müssen an dieser Stelle keine weiteren Korrekturen vorgenommen werden.
-        \medskip
-
-        \begin{table}[tb]
-        \caption[Experimentelle und Literaturwerte (\cite{NIST_ASD}) der charakteristischen Linien der Quecksilberdampflampe und der Heliumlampe.]{Experimentelle und Literaturwerte (\cite{NIST_ASD}) der charakteristischen Linien der Quecksilberdampflampe und der Heliumlampe zum Prüfen der Kalibrierung des Spektrometers. Für die weitere Interprätation siehe \cref{subsec:kalibrierung}}
-        \label{tbl:charakteristische-linien}
-        \selectfontsize{10pt}
-        \begin{tabu} {X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
-          \unitoprule \\
-          &\multicolumn3{c}{\textbf{Hg}}  &\multicolumn3{c}{\textbf{He}}  \\
-          \unimidrule \\
-          $\lambda_\mathrm{exp}$ $[\si{\nano\meter}]$ &546,075  &576,961  &579,067  &501,569  &587,562  &667.815 \\
-          $\lambda_\mathrm{lit}$ $[\si{\nano\meter}]$ &546,237(1)  &577,128(2)  &579,241(3) &501,572(41)  &587,752(01)  &668,274(09) \\
-          \unitoprule \\
-        \end{tabu}
-        \end{table}
-
-        Natürlich ist der Nd:YAG-Laser ebenfalls eine geeignet Lichtquelle zur Kalibrierung. Ein Spektrum ohne Streuer wurde aber nicht aufgezeichnet und so soll hier vorab darauf verwiesen werden, dass das Maximum der Rayleigh-Streuung bezüglich der Raman-Verschiebung in allen späteren Messungen auf $\sim\SI{0}{\per\centi\meter}$ liegt und damit aufgrund der Einstellung des verwendeten Analyseprogramms bei $\SI{532}{\nano\meter}$. Dies bestätigt wiederum die zuvor gemachte Behauptung, dass das Spektrometer hinreichend präzise für dieses Experiment kalibriert ist.
-
-
-      \subsection{Linearität des Spektrometers}
-      \label{subsec:linearitaet}
-
-        \begin{figure}[tb]
-          \subfloat[]{
-            \tikzsetnextfilename{linearity}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = 666, xmax = 671,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Wellenlänge $\lambda$ in $\si{\nano\meter}$},
-                ylabel = {Zählrate $n$},
-                ]
-                % Add plots
-                \addplot[color=red,  line width = 0.5pt] table [x=lambda,y=n]{data/he_50.txt};
-                \addlegendentry{$\SI{50}{\milli\second}$}
-                \addplot[color=blue,  line width = 0.5pt] table [x=lambda,y=n]{data/he_100.txt};
-                \addlegendentry{$\SI{100}{\milli\second}$}
-                \addplot[color=green,  line width = 0.5pt] table [x=lambda,y=n]{data/he_200.txt};
-                \addlegendentry{$\SI{200}{\milli\second}$}
-                \addplot[color=orange,  line width = 0.5pt] table [x=lambda,y=n]{data/he_400.txt};
-                \addlegendentry{$\SI{400}{\milli\second}$}
-                \addplot[color=purple,  line width = 0.5pt] table [x=lambda,y=n]{data/he_800.txt};
-                \addlegendentry{$\SI{800}{\milli\second}$}
-                \addplot[color=brown,  line width = 0.5pt] table [x=lambda,y=n]{data/he_2000.txt};
-                \addlegendentry{$\SI{2000}{\milli\second}$}
-                \addplot[color=violet,  line width = 0.5pt] table [x=lambda,y=n]{data/he_3000.txt};
-                \addlegendentry{$\SI{3000}{\milli\second}$}
-                \addplot[color=cyan,  line width = 0.5pt] table [x=lambda,y=n]{data/he_4000.txt};
-                \addlegendentry{$\SI{4000}{\milli\second}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:linearity}
-            }
-            \subfloat[]{
-            \tikzsetnextfilename{linear_fit}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,0)}, legend columns=1, anchor=south east},
-                every axis plot,
-                xmin = 0, xmax = 5,
-                ymin = 0, ymax = 35000,
-                xlabel = {Integrationszeit $t_\mathrm{int}$ in $\si{\second}$},
-                ylabel = {Zählrate $n$},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                % Add plots
-              	\addplot[color=red, only marks] coordinates {
-              		(0.05,382.97)
-              		(0.1,827.38)
-              		(0.2,1605.61)
-              		(0.4,3205.07)
-              		(0.8,6782.87)
-              		(2,16725.76)
-              		(4,33572.35)
-              	};
-                \addlegendentry{Messpunkte}
-                \addplot[color=blue, line width=1pt] gnuplot{8386.15286*x};
-                \addlegendentry{Lineare Regression}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:linearitaet}}
-          \caption[Spektren der $\sim\SI{668}{\nano\meter}$-Linie der Heliumlampe bei verschiedenen Integrationszeiten zur Prüfung der Linearität des Spektrometers und Auftragung der Maxima-Werte mit linearer Regression.]{\protect\subref{fig:linearity} Spektren der $\sim\SI{668}{\nano\meter}$-Linie der Heliumlampe bei verschiedenen Integrationszeiten zur Prüfung der Linearität des Spektrometers. \protect\subref{fig:linearitaet} Messpunkte der $\sim\SI{668}{\nano\meter}$-Maxima der Heliumlampen-Spektren bei verschiedenen Integrationszeiten und lineare Regression gemäß \cref{eq:linear-fit}. Für weitere Ausführungen siehe \cref{subsec:linearitaet}}
-          \label{fig:linearity}
-        \end{figure}
-
-        Das Spektrometer zählt unter Verwendung von Dioden die einfallenden Photonen, welche nach Wellenlänge sortiert sind. Bei zeitlich konstanter Lichtquelle sollte also die Zahl $n$ der registrierten Photonen pro wellenlänge linear zunehmen. Um dies zu überprüfen, sind in \cref{fig:linearity} die Spektren der Heliumlampe für verschiedene Integrationszeiten aufgetragen, wiederum ohne Probe im Strahlengang. An dieser Stelle ist zu beachten, dass das Spektrometer 16 Bit basiert ist und damit eine Zählrate von $2^{16}\approx 65000$ nicht überschreiten kann.
-
-        Die Zählrate der lokalen $\sim\SI{668}{\nano\meter}$-Maxima der Spektren werden mithilfe von \textit{Python} aus den Rohdaten extrahiert, dieses Mal ohne die Verwendung eines Fits. Aufgetragen über den Integrationszeiten ergibt sich, wie erwartet, ein linearer Zusammenhang, wie in \cref{fig:linearitaet} abgebildet ist. Die Gleichung der linearen Regression durch den Ursprung ist
-        \begin{equation}
-          n(t_\mathrm{int})=\SI{8,386(1)}{\per\milli\second} \cdot t_\mathrm{int}.
-          \label{eq:linear-fit}
-        \end{equation}
-        Messpunkte und Regression liegen übereinander, was die Linearität des Spektrometers unterhalb der Sättigungsgrenze bestätigt.
-
-
-        \begin{figure}[htb]
-          \centering
-          \tikzsetnextfilename{kerbfilter}
-          \begin{tikzpicture}
-            \begin{axis}[
-              /tikz/line join=bevel,
-              width=0.8*\textwidth,
-              height=0.5*\textwidth,
-              grid,
-              legend style={at={(1,1)}, legend columns=1, anchor=north east},
-              every axis plot,
-              xmin = 480, xmax = 660,
-              %ymin = \Pmin, ymax = \Pmax,
-              xlabel = {Wellenlänge $\lambda$ in $\si{\nano\meter}$},
-              ylabel = {Zählrate $n$},
-              /pgf/number format/use comma,
-              /pgf/number format/1000 sep={},
-              ]
-              % Add plots
-              \addplot[color=red,  line width = 0.5pt] table [x=lambda,y=n]{data/handy_ohne_kerb.txt};
-              \addlegendentry{Ohne Kerbfilter}
-              \addplot[color=blue,  line width = 0.5pt] table [x=lambda,y=n]{data/handy_mit_kerb.txt};
-              \addlegendentry{$\varphi=\ang{0}$}
-              \addplot[color=green,  line width = 0.5pt] table [x=lambda,y=n]{data/handy_mit_kerb_5_grad.txt};
-              \addlegendentry{$\varphi=\ang{5}$}
-              \addplot[color=orange,  line width = 0.5pt] table [x=lambda,y=n]{data/handy_mit_kerb_10_grad.txt};
-              \addlegendentry{$\varphi=\ang{10}$}
-              \addplot[color=magenta,  line width = 0.5pt] table [x=lambda,y=n]{data/handy_mit_kerb_15_grad.txt};
-              \addlegendentry{$\varphi=\ang{15}$}
-            \end{axis}
-          \end{tikzpicture}
-          \caption[Spektren einer Handytaschenlampe mit um den Winkel $\varphi$ gedrehten Winkel und ohne Kerbfilter.]{Spektren einer Handytaschenlampe mit um den Winkel $\varphi$ gedrehten Winkel und ohne Kerbfilter. Relevant ist die Verschiebung des durch den Kerbfilter entstehende Minimum des Transmissionsspektrum und dessen Verschiebung zu kürzeren Wellenlängen mit größer werdendem $\varphi$.}
-          \label{fig:kerbfilter-spektren}
-        \end{figure}
-
-      \subsection{Kerbfilter}
-      \label{subsec:kerbfilter}
-
-        Um die Breite und Position des Wellenlängenbereichs, welchen der Kerbfilter blockt, zu messen, wird eine Handytaschenlampe als breitbandige Lichtquelle genutzt. \Cref{fig:kerbfilter-spektren} zeigt Spektren des Handys mit und ohne Kerbfilte im Strahlengang. Dabei ist der Kerbfilter in der Nullposition $\varphi=0$ um $\ang{90}$ gegen den Strahlengang gedreht. Die weiteren Drehwinkel sind als Drehung gegen die Nullposition gemessen und aufgrund der Messung mittels Millimeterpapier stark Messunsicherheitsbehaftet ($\delta \varphi=\pm \ang{1}$). Durch die Drehung des Kerbfilters (Dünnschichtfilter) vergrößert sich die vom Licht zu transmittierende Schichtdicke und damit verschieben sich die geblockten Wellenlängen zu kleineren Werten. Hierbei ist die Verschiebung nach einfacher Geometrie unabhängig von der Drehrichtung. Die Breite des geblockten Wellenlängenintervalls wird in den folgenden Analysen eine Rolle spielen, da neben dem Rayleigh-Maximum auch Raman-Linien unterdrückt werden. Wichtig an dieser Stelle ist, dass Flanken des Bereichs der unterdrückten Wellenlängen in \cref{fig:kerbfilter-spektren} sehr steil sind. So kommt es abseits des offensichtlichen Bereiches zu keinen Intensitätsänderungen der Linien.
-
-
-    \section{Abschätzung der zu erwartenden Raman-Verschiebungen}
-    \label{subsec:harm-oszi-absch}
-
-      Zunächst soll anhand eines einfachen harmonischen Oszillator Modells zweier Atome die zu erwartenden Raman-Verschiebungen in Abhängikeit der beteiligten Elemente abgeschätzt werden (vgl. \cref{subsec:harm-oszi-absch}).
-
-      Als Basis der theoretischen Erwartung dient die Streckschwingung einer H-H-Bindung, deren Raman-Verschiebung nach \cite{herzberg} bei
-      \begin{equation*}
-        \nu_\mathrm{H-H}=\frac{1}{\lambda_0}-\frac{1}{\lambda}=\SI{4160}{\per\centi\meter},
-      \end{equation*}
-      mit der Wellenlänge des eingestrahlten Lichts $\lambda_0$ und der Wellenlänge der Raman-Maxima $\lambda$, liegt. Mit \cref{eq:omega} ergibt sich die Bindungsenergie des harmonischen Oszillators zu
-      \begin{equation*}
-        E=\frac{\mu}{2}\omega^2x_0^2=\frac{\mu}{2}\left[ 2\pi c \underbrace{\left( \frac{1}{\lambda_0} - \frac{1}{\lambda} \right)}_{=\nu} \right]^2x_0^2
-      \end{equation*}
-      wobei $\mu$ wiederum die reduzierte Masse ist und $c$ die Lichtgeschwindigkeit. Unter der Annahme, dass die Bindungsenergie für andere Atome gleich groß ist, folgt der Zusammenhang
-      \begin{equation}
-        \nu_\mathrm{Atom1-Atom2}=\sqrt{\frac{\mu_\mathrm{H-H}}{\mu_\mathrm{Atom-1-Atom2}}}\cdot \nu_\mathrm{H-H}.
-        \label{eq:theo-raman-versch}
-      \end{equation}
-      Damit ergeben sich die in \cref{tbl:theo-raman-versch} aufgeführten Raman-Verschiebungen für ausgewählte Atombindungen, welche in folgender Analyse relevant sind. Zur Berechnung wurden die in \cite{NIST_MASS} aufgeführten Atommassen verwendet.
-
-      \begin{table}[htb]
-      \caption[Theoretische Raman-Verschiebung verschiedener Atomkombinationen auf Grundlage des harmonischen Oszillator Modells unter Vorraussetzung der H-H-Bindungsenergie.]{Theoretische Raman-Verschiebung verschiedener Atomkombinationen auf Grundlage des harmonischen Oszillator Modells unter Vorraussetzung der H-H-Bindungsenergie. Die Werte wurden mit der Raman-Verschiebung einer H-H-Bindung $\nu_\mathrm{H-H}=\SI{4160}{\per\centi\meter}$ \cite{herzberg} und den in \cite{NIST_MASS} aufgeführten Atommassen nach \cref{eq:theo-raman-versch} berechnet.}
-      \label{tbl:theo-raman-versch}
-      \selectfontsize{10pt}
-      \begin{tabu} {X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
-        \unitoprule \\
-        &C-H  &C-D  &C-Cl &C-C  &O-H  &C-O  &N-O  \\
-        \unimidrule \\
-        $\Delta\nu$ $[\si{\nano\meter}]$ &3063 &2249 &988 &1206 &3033 &1128 &1081\\
-        \unitoprule \\
-      \end{tabu}
-      \end{table}
-
-
-    \section{Chlormethane}
-
-      In diesem Abschnitt werden die Spektren der betrachteten Chlormethane analysiert. Ziel ist die Zuordnung der auftretenden Raman-Linien zu den  Molekülschwingungen. Weiter wirbei Austausch eines oder mehrerer Aetome in einem Molekül vorherzusagen. Dies geschieht mithilfe des eingeführten harmonischenOszillator Modells.
-
-      Die Messungen wurden mit Kerbfilter im Strahlengang des Streulichtes zur Unterdrückung des Rayleigh-Maximums und zusätzlich dem Polarisationsfilter zur Determinierung des Polarisationsgrades der Raman-Linien druchgeführt.
-
-
-      \subsection{Tetrachlormethan}
-      \label{subsec:tetrachlor}
-
-        \begin{figure}[htb]
-          \subfloat[]{
-            \tikzsetnextfilename{CCl4}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = -1000, xmax = 1000,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-                ylabel = {Zählrate $n$},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                % Add plots
-                \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CCl4_pol0.txt};
-                \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:ccl4}}
-          \subfloat[]{
-            \tikzsetnextfilename{CCl4_beide}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = 0, xmax = 1600,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-                ylabel = {Zählrate $n$},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                % Add plots
-                \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CCl4_pol0.txt};
-                \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-                \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/CCl4_pol1.txt};
-                \addlegendentry{$\theta_\mathrm{pol}=\ang{90}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:ccl4-beide}}
-          \caption[Spektren der $\mathrm{CCl_4}$-Probe mit Polarisationsfilter in der Nullstellung und in der dazu orthogonalen Position.]{Spektren der $\mathrm{CCl_4}$-Probe mit Polarisationsfilter in der Nullstellung und in der dazu orthogonalen Position. \protect\subref{fig:ccl4} zeigt nur das Spektrum mit Polarisationsfilter in der Nullstellung für negative und positive Werte der Raman-Verschiebung. \protect\subref{fig:ccl4-beide} vergleicht lediglich den positiven Teil der Raman-Verschiebung-Achse mit Polarisationsfilter in beiden Stellungen.}
-          \label{fig:ccl4}
-        \end{figure}
-
-        \begin{figure}[p]
-          \centering
-          \subfloat[]{
-            \includegraphics[width=0.8\textwidth]{figures/tetraeder.png}
-            \label{fig:tetraeder-schwingungen}}  \\
-          \subfloat[]{
-            \includegraphics[width=0.8\textwidth]{figures/ch3cl.png}
-            \label{fig:chcl3-schwingungen}}
-          \caption[Mögliche Schwingungen eines tetraedischen Moleküls.]{Mögliche Schwingungen eines tetraedischen Moleküls. \protect\subref{fig:tetraeder-schwingungen} zeigt die Schwingungen für ein $\mathrm{XY_4}$-Molekül, \protect\subref{fig:chcl3-schwingungen} die eines $\mathrm{CH_3Cl}$-Moleküls. Offenbar sind die Schwingungen der zweiten Zeile in \protect\subref{fig:tetraeder-schwingungen} energetisch entartet (vgl. \cref{subsec:tetrachlor}). \cite{herzberg}}
-          \label{fig:schwingungen}
-        \end{figure}
-
-        \Cref{fig:ccl4} zeigt das Spektrum der Tetrachlormethan-Probe ($\mathrm{CCl_4}$) mit eingesetztem Polarisationsfilter. Der Winkel $\theta_\mathrm{pol}$ gibt hierbei den Drehwinkel des Polarisationsfilter an, wobei $\theta=\ang{0}$ die Nullpolarisationsstellung bezeichnet. Bei letzter Einstellung sind alle Raman-Maxima sichtbar, polarisierte zu symmetrischen Schwingungen gehörige und depolarisierte. Weiter liegt der Kerbfilter im Strahlengang um das prominente Maximum der Rayleigh-Streuung zu schwächen. Da der Wellenlängenbereich, welcher durch den Kerbfilter unterdrückt wird, recht breit ist (vgl. \cref{subsec:kerbfilter}), verschwinden hierdurch auch einige der Raman-Maxima auf der linken Seite (negative Raman-Verschiebung) des Rayleigh-Maximums. Da die Stokes- und Anti-Stokes-Maxima aber symmetrisch um das Rayleigh-Maximum verteilt liegen, reicht es für die Charakterisierung der Raman-Linien eine Seite zu betrachten.
-        \medskip
-
-        \Cref{fig:ccl4-beide} zeigt nun den positiven Bereich der Raman-Verschiebung der $\mathrm{CCl_4}$-Probe mit Polarisationsfilter in der Nullstellung und der um $\ang{90}$ gedrehten Stellung. Insgesamt sind für die Nullpolarisationsstellung sechs oder sieben Raman-Maxima zu erkennen. An dieser Stelle ist noch unklar, ob das Maximum des Signals bei $\sim \SI{777}{\per\centi\meter}$ zu einem einzelnen Singulett oder zwei dicht beieinanderliegenden Linien (im Abstand $\Delta \nu \approx \SI{20}{\per\centi\meter}$) eines Dupletts gehört.
-
-        Nun lässt sich aufgrund der in \cref{subsec:harm-oszi-absch} berechneten theoretischen Raman-Verschiebung von $\SI{988}{\per\centi\meter}$ für eine einfache C-Cl-Bindung das Maximum bei $\sim \SI{1533}{\per\centi\meter}$ als Fundamentalschwingung ausschließen (bei allen anderen Schwingungen sind mehr Atome oder schwere Atome beteiligt). Damit verbleiben noch vier oder fünf Maxima.
-
-        Bei Betrachtung des Spektrum mit $\theta=\ang{90}$ fällt auf, dass nur das Maximum bei $\sim\SI{451}{\per\centi\meter}$ polarisiert, die zugehörige Schwingung also symmetrisch ist, während alle anderen depolarisiert sind.
-
-        \Cref{fig:tetraeder-schwingungen} zeigt die möglichen Schwingungen eines $\mathrm{XY_4}$-Moleküls (X, Y seien Elemente). Offensichtlich sind drei Schwingungen in der zweiten, bzw. dritte Zeile mit Drehungen und Spiegelungen an Ebenen ineinander überführbar. Das heißt, die Schwingungen sind dreifach entartet. Weil auch die Schwingungen $\nu_{2j}$, $j\in\{a,b\}$, zweifach entartet sind, erwartet man insgesamt vier Fundamentalschwingungen. Die einzige symmetrische Schwingung ist die Schwingung $\nu_1$, welche somit dem fast vollständig polarisierten Maximum bei $\sim\SI{451}{\per\centi\meter}$ zugeordnet werden kann.
-        \medskip
-
-        Weiter lässt sich die Streckschwingung eines C-Cl-Paares als Superposition der $\nu_{3i}$, $i\in\{ a,b,c\}$ darstellen. Für die Streckschwingung wurde in \cref{subsec:harm-oszi-absch} eine Raman-Verschiebung von $\nu_\mathrm{C-Cl}=\SI{988}{\per\centi\meter}$ abgeschätzt. Aufgrund des für die Abschätzung verwendeten vereinfachten Modells lässt sich hiermit die Zuordnung des Maximums bei $\sim \SI{777}{\per\centi\meter}$ zu den entarteten $\nu_{3i}$ Schwingungen aus \cref{fig:tetraeder-schwingungen}, trotz der großen Abweichung von über $\SI{200}{\per\centi\meter}$, rechtfertigen. Schließlich wechselwirken bei der Überlagerung der Schwingungen mehr als nur die beiden für die Streckschwingung betrachteten Atome.
-        \medskip
-
-        Die verbleibenden beiden Schwingungen können an dieser Stelle noch nicht zugeordnet werden.
-
-
-      \subsection{Chloroform und Deuterochloroform}
-      \label{subsec:chloro-deutero}
-
-        \begin{figure}[p]
-          \subfloat[]{
-            \tikzsetnextfilename{CHCl3_CCL4}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = 0, xmax = 3100,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-                ylabel = {Zählrate $n$},
-                xtick = {0,500, 1000, ..., 3000},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                % Add plots
-                \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CCl4_pol0.txt};
-                \addlegendentry{$\mathrm{CCl_4}$}
-                \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/CHCl3_pol0.txt};
-                \addlegendentry{$\mathrm{CHCl_3}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:ccl4-chcl3}}
-          \subfloat[]{
-            \tikzsetnextfilename{CHCl3_CDCL3}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = 0, xmax = 3100,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-                ylabel = {Zählrate $n$},
-                xtick = {0,500, 1000, ..., 3000},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                % Add plots
-                \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CHCl3_pol0.txt};
-                \addlegendentry{$\mathrm{CHCl_3}$}
-                \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/CDCl3_pol0.txt};
-                \addlegendentry{$\mathrm{CDCl_3}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:chcl3-cdcl3}} \\
-          \subfloat[]{
-            \tikzsetnextfilename{CHCl3}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = 0, xmax = 3100,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-                ylabel = {Zählrate $n$},
-                xtick = {0,500, 1000, ..., 3000},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                  % Add plots
-                  \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CHCl3_pol0.txt};
-                  \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-                  \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/CHCl3_pol1.txt};
-                  \addlegendentry{$\theta_\mathrm{pol}=\ang{90}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:chcl3}}
-          \subfloat[]{
-            \tikzsetnextfilename{CDCl3}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = 0, xmax = 3100,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-                ylabel = {Zählrate $n$},
-                xtick = {0,500, 1000, ..., 3000},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                % Add plots
-                \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CDCl3_pol0.txt};
-                \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-                \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/CDCl3_pol1.txt};
-                \addlegendentry{$\theta_\mathrm{pol}=\ang{90}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:cdcl3}}
-          \caption[Spektren zur Analyse von $\mathrm{CHCl_3}$ und $\mathrm{CDCl_3}$.]{Spektren zur Analyse von $\mathrm{CHCl_3}$ und $\mathrm{CDCl_3}$. \protect\subref{fig:ccl4-chcl3} vergleicht das in \cref{subsec:tetrachlor} analysierte Spektrum von $\mathrm{CCl_4}$ mit dem von $\mathrm{CHCl_3}$, \protect\subref{fig:chcl3-cdcl3} vergleicht $\mathrm{CHCl_3}$ und $\mathrm{CDCl_3}$, alle Messungen mit Polarisationsfilter in Nullstellung. \protect\subref{fig:chcl3} und \protect\subref{fig:cdcl3} dienen der Determinierung der Symmetrie der Schwingungen von $\mathrm{CHCl_3}$ und $\mathrm{CDCl_3}$ jeweils durch vergleich der Spektren mit Polarisationsfilterwinkel $\theta=\ang{0},\ang{90}$.}
-          \label{fig:chcl3-cdcl3-analysis}
-        \end{figure}
-
-        \Cref{fig:chcl3-schwingungen} zeigt die möglichen Schwingungen eines $\mathrm{CH_3Cl}$-Moleküls. Aufgrund der gleichen Anordnung der Atome sind die Schwingungen für die hier untersuchten $\mathrm{CHCl_3}$- und $\mathrm{CDCl_3}$-Moleküle die gleichen. Die erste Zeile ($\nu_1$, $\nu_2$, $\nu_3$) enthält symmetrische Schwingungen.
-        \medskip
-
-        In \cref{fig:ccl4-chcl3} sind die Spektren von $\mathrm{CCl_4}$ und $\mathrm{CHCl_3}$ mit Polarisationsfilter in Nullposition zu sehen. Zunächst fällt auf, dass $\mathrm{CHCl_3}$ eine zusätzliche Raman-Linie bei $\sim \SI{3020}{\per\centi\meter}$ aufweist. Dieses kann mittels der in \cref{subsec:harm-oszi-absch} durchgeführten Abschätzung der Streckschwingung der C-H-Bindung zugeordnet werden. Ein Blick auf \cref{fig:chcl3} verrät, dass das Maximum fast vollständig polarisiert ist und deshalb der Schwingung $\nu_3$ aus \cref{fig:chcl3-schwingungen} zugeordnet wird.
-
-        Weiter bleibt das bei $\mathrm{CCl_4}$ bei $\sim\SI{777}{\per\centi\meter}$ beobachtete Maximum, leicht verschoben zu $\sim \SI{668}{\per\centi\meter}$, erhalten. Auch dieses ist fast vollständig polarisiert. Damit gehört das Maximum zu einer symmetrischen Schwingung.
-
-        Nun ist nach \cref{subsec:tetrachlor} klar, dass das Maximum bei $\sim\SI{451}{\per\centi\meter}$ des $\mathrm{CCl_4}$-Spektrums zur symmetrischen Schwingung $\nu_1$ aus \cref{fig:tetraeder-schwingungen} gehört. Durch das Ersetzen eines Cl-Atoms durch ein H-Atom verringert sich nun im Modell eines harmonischen Oszillators (an dieser Stelle mit mehr als zwei beteiligten Atomen) die relative Masse der beteiligten schwingenden Atome zum Kleineren und damit der Wurzel-Vorfakter aus \cref{eq:theo-raman-versch} zum Größeren. Auch wenn die Formel nur für einen Oszillator mit zwei Schwingern gilt, lässt sich hiermit die Erwartung begründen, dass die Raman-Verschiebung dieser symmetrischen Schwingung beim $\mathrm{CHCl_3}$-Molekül (und auch beim $\mathrm{CDCl_3}$-Molekül) größer ist, als beim $\mathrm{CCl_4}$-Molekül. Damit lässt sich das polarisierte Maximum bei $\sim\SI{668}{\per\centi\meter}$ der Schwingung $\nu_1$ aus \cref{fig:chcl3-schwingungen} zuordnen.
-
-        Hiermit verbleibt nur noch eine symmetrische Schwingung im $\mathrm{CHCl_3}$-Spektrum (bei $\sim\SI{366}{\per\centi\meter}$), welche durch das Ausschlussverfahren als Schwingung $\nu_2$ aus \cref{fig:chcl3-schwingungen} identifiziert werden kann.
-
-        Die beiden depolarisierten Maxima bei $\sim\SI{1208}{\per\centi\meter}$ und $\sim\SI{218}{\per\centi\meter}$ können nur auf die nicht-symmetrischen Schwingungen eingeschränkt werden.
-
-        Die Erwartung, dass die energetisch entarteten Schwingungen des $\mathrm{CCl_4}$-Moleküls durch das Ersetzen eines Cl-Atoms durch ein H-Atom aufgehoben würde, ist nur eingeschränkt erfüllt worden. Es ist ein zusätzliches Maximum zu beobachten, jedoch wären eigentlich noch mehr zu erwarten. Vermutlich sind diese von anderen Raman-Linien überlagert, sodass die zusätzlichen Linien mit dem Versuchsaufbau nicht aufgelöst werden können.
-        \medskip
-
-        \begin{table}[htb]
-        \caption[Zuordnung der Maxima der Spektren von $\mathrm{CHCl_3}$ und $\mathrm{CDCl_3}$ zu den zugehörigen Molekülschwingungen.]{Zuordnung der Maxima der Spektren von $\mathrm{CHCl_3}$ und $\mathrm{CDCl_3}$ zu den zugehörigen Molekülschwingungen. Die Herleitung der Zuordnung ist in \cref{subsec:chloro-deutero} beschrieben, die Bezeichnungen der Schwingungen aus \cref{fig:schwingungen} entnommen.}
-        \label{tbl:chcl3-cdcl3}
-        \selectfontsize{10pt}
-        \begin{tabu} {X[r]X[r]X[r]X[r]X[r]X[r]}
-          \unitoprule \\
-          \multicolumn3{c}{\textbf{$\mathrm{CHCl_3}$}}  &\multicolumn3{c}{\textbf{$\mathrm{CHCl_3}$}} \\
-          $\Delta \nu$ $[\si{\per\centi\meter}]$  &Schwingung  &Symmetrisch &$\Delta \nu$ $[\si{\per\centi\meter}]$  &Schwingung  &Symmetrisch   \\
-          \unimidrule \\
-          218 &$\nu_4$/ $\nu_5$  &nein   &218  &$\nu_4$/ $\nu_5$ &nein \\
-          366 &$\nu_2$ &ja &366  &$\nu_2$ &ja \\
-          668  &$\nu_1$  &ja  &649 &$\nu_1$ &ja \\
-          760 &$\nu_4$/ $\nu_5$ &nein &740  &$\nu_4$/ $\nu_5$ &nein\\
-          1208  &$\nu_6$  &nein  &902  &$\nu_6$  &nein \\
-          3020  &$\nu_3$  &ja &2249 &$\nu_3$  &ja \\
-          \unitoprule \\
-        \end{tabu}
-        \end{table}
-
-        \Cref{fig:cdcl3} zeigt den Vergleich der Spektren von $\mathrm{CHCl_3}$ und $\mathrm{CDCl_3}$ bei Polarisationsfilter in Nullstellung. Das beim $\mathrm{CHCl_3}$-Molekül der C-H-Streckschwingung zugeordnete Maximum wird beim $\mathrm{CDCl_3}$-Molekül durch ein Maximum an der Stelle $\sim\SI{2249}{\per\centi\meter}$ ersetzt. Dies stimmt mit der für die C-D-Streckschwingung abgeschätze Raman-Verschiebung überein und kann wegen der Symmetrie der zugehörigen Schwingung (vgl. \cref{fig:cdcl3}), wie auch die C-H-Streckschwingung, der Schwingung $\nu_3$ aus \cref{fig:chcl3-schwingungen} zugeordnet werden. Die auftretende Verschiebung durch Ersetzen eines Wasserstoff-Atoms durch ein Isotop des Wasserstoff-Atoms nennt man \textit{Isotopen-Verschiebung}.
-
-        Die drei Maxima bei den kleinsten Raman-Verschiebungen sind bei beiden Spektren unverschoben. Dies zeigt, dass bei den zugehörigen Schwingungen das H- bzw. D-Atom eine vernachlässigbare Rolle spielen. Damit wird zunächst das Maximum bei $\sim\SI{366}{\per\centi\meter}$, in Einklang mit der vorherigen Zuordnung, als Schwingung $\nu_2$ identifiziert. Weiter erfüllen die Schwingungen $\nu_4$ und $\nu_5$ das Kriterium der prominenten Unabhängigkeit vom H-, bzw. D-Atom, womit die zu nicht-symmetrischen Schwingungen gehörenden Maxima von $\mathrm{CHCl_3}$, bzw. $\mathrm{CDCl_3}$ bei $\sim\SI{1208}{\per\centi\meter}$, bzw. $\sim\SI{902}{\per\centi\meter}$ der Schwingung $\nu_6$ zugeordnet werden können.
-
-        Die Maxima des $\mathrm{CDCl_3}$ Spektrums bei $\sim\SI{649}{\per\centi\meter}$ und $\sim \SI{739}{\per\centi\meter}$ werden analog zum $\mathrm{CHCl_3}$-Molekül $\nu_1$ und einer der verbleibenden beiden Schwingungend der zweiten Zeile von \cref{fig:chcl3-schwingungen} zugeordnet. Auffällig hierbei ist die Verschiebung um $\sim\SI{10}{\per\centi\meter}$ zu einer kleineren Raman-Verschiebung durch das Ersetzen des H- mit einem D-Atom. Dieses Phänomen ist Teil der oben eigneführten \textit{Isotopen-Verschiebung}.
-        \medskip
-
-        Die gesamte Zurodnung der Maxima der beiden Moleküle ist in \cref{tbl:chcl3-cdcl3} aufgeführt.
-
-
-      \subsection{Dichlormethan}
-
-        Zunächst wird das Spektrum von Dichlormethan ($\mathrm{CH_2Cl_2}$) mit Polarisationsfilter in Nullstellung mit dem Spektrum von $\mathrm{CHCl_3}$ verglichen (vgl. \cref{fig:chcl3-ch2cl2}). Offenbar spaltet das Maximum der C-H-Streckschwingung bei $\sim\SI{3020}{\per\centi\meter}$ zu zwei Maxima auf. Eines davon, das prominente, ist weiterhin fast vollständig polarisiert, das andere ist teilweise depolarisiert (vgl. \cref{fig:ch2cl2}). Das polarisierte Maximum lässt sich hiermit der symmetrischen Schwingung $\nu_1$, das depolarisiert der zur $\mathrm{CCl_2}$-Ebene antisymmetrischen Schwingung $\nu_6$ in \cref{fig:ch2cl2-schwingungen} zuordnen.
-
-        Weiter erscheint bei $\sim\SI{2830}{\per\centi\meter}$ ein bisher nicht bebachtetes vollständig polarisiertes Maximum. Die restlichen Maxima im Bereich der Raman-Verschiebung $\Delta \nu < \SI{1500}{\per\centi\meter}$ erscheinen verschoben. Sichtbar ist, dass die C-Cl-Streckschwingung bei $\sim\SI{705}{\per\centi\meter}$ weiter als fast vollständig polarisiertes Maximum bestehen bleibt ($\nu_3$ in \cref{fig:ch2cl2-schwingungen}). Da Streckschwingungen hochenergetischer als Biegeschwingungen sind, kann so geschlossen werden, dass die C-$\mathrm{Cl_2}$-Vibrationen bei niedrigeren Raman-Verscheibungen zu finden sein müssen. Jedoch bleibt nur ein teilweise depolarisiertes Maximum bei $\sim\SI{282}{\per\centi\meter}$ im aufgenommenen Spektrum, während zwei Vibrationen zu zuzuordnen sind.
-
-        \begin{figure}[p]
-          \centering
-          \subfloat[]{
-          \tikzsetnextfilename{CHCl3_CH2Cl2}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = 0, xmax = 3100,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-                ylabel = {Zählrate $n$},
-                xtick = {0,500, 1000, ..., 3000},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                % Add plots
-                %\addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CCl4_pol0.txt};
-                %\addlegendentry{$\mathrm{CCl_4}$}
-                \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/CHCl3_pol0.txt};
-                \addlegendentry{$\mathrm{CHCl_3}$}
-                \addplot[color=green,  line width = 0.5pt] table [x=raman,y=n]{data/CH2Cl2_pol0.txt};
-                \addlegendentry{$\mathrm{CH_2Cl_2}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:chcl3-ch2cl2}
-          }
-          \subfloat[]{
-          \tikzsetnextfilename{CH2Cl2}
-            \begin{tikzpicture}
-              \begin{axis}[
-                /tikz/line join=bevel,
-                width=0.45*\textwidth,
-                height=0.45*\textwidth,
-                grid,
-                legend style={at={(1,1)}, legend columns=1, anchor=north east},
-                every axis plot,
-                xmin = 0, xmax = 3100,
-                %ymin = \Pmin, ymax = \Pmax,
-                xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-                ylabel = {Zählrate $n$},
-                xtick = {0,500, 1000, ..., 3000},
-                /pgf/number format/use comma,
-                /pgf/number format/1000 sep={},
-                ]
-                % Add plots
-                \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CH2Cl2_pol0.txt};
-                \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-                \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/CH2Cl2_pol1.txt};
-                \addlegendentry{$\theta_\mathrm{pol}=\ang{90}$}
-              \end{axis}
-            \end{tikzpicture}
-            \label{fig:ch2cl2}
-          } \\
-          \subfloat[]{
-            \includegraphics[width=0.8\textwidth]{figures/ch2cl2.png}
-            \label{fig:ch2cl2-schwingungen}
-          }
-          \caption[Aufgezeichnete Spektren von $\mathrm{CH_2Cl_2}$ und mögliche Schwingungen des Moleküls.]{\protect\subref{fig:chcl3-ch2cl2} Aufgezeichnete Spektren von $\mathrm{CH_2Cl_2}$ im Vergleich mit $\mathrm{CHCL_3}$, jeweils mit Polarisationsfilter in Nullstellung. \protect\subref{fig:ch2cl2} Spektren von $\mathrm{CH_2Cl_2}$ mir Winkel des Polarisationsfilter $\theta=\ang{0},\ang{90}$. \protect\subref{fig:ch2cl2} Mögliche Schwingungen des $\mathrm{CH_2Cl_2}$-Moleküls. \cite{herzberg}}
-          \label{fig:ch2cl2-analyse}
-        \end{figure}
-
-
-    \section{Kohlenstoffringe}
-
-      \begin{figure}[p]
+      \begin{figure}[bt]
         \centering
-        \subfloat[]{
-        \tikzsetnextfilename{C6H6}
-          \begin{tikzpicture}
-            \begin{axis}[
-              /tikz/line join=bevel,
-              width=0.45*\textwidth,
-              height=0.45*\textwidth,
-              grid,
-              legend style={at={(1,1)}, legend columns=1, anchor=north east},
-              every axis plot,
-              xmin = 0, xmax = 3500,
-              %ymin = \Pmin, ymax = \Pmax,
-              xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-              ylabel = {Zählrate $n$},
-              %xtick = {0,500, 1000, ..., 3500},
-              /pgf/number format/use comma,
-              /pgf/number format/1000 sep={},
-              ]
-              % Add plots
-              %\addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/CCl4_pol0.txt};
-              %\addlegendentry{$\mathrm{CCl_4}$}
-              \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/C6H6_pol0.txt};
-              \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-              \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/C6H6_pol1.txt};
-              \addlegendentry{$\theta_\mathrm{pol}=\ang{90}$}
-            \end{axis}
-          \end{tikzpicture}
-          \label{fig:c6h6}
-        }
-        \subfloat[]{
-        \tikzsetnextfilename{C6H12}
-          \begin{tikzpicture}
-            \begin{axis}[
-              /tikz/line join=bevel,
-              width=0.45*\textwidth,
-              height=0.45*\textwidth,
-              grid,
-              legend style={at={(1,1)}, legend columns=1, anchor=north east},
-              every axis plot,
-              xmin = 0, xmax = 3500,
-              %ymin = \Pmin, ymax = \Pmax,
-              xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-              ylabel = {Zählrate $n$},
-              %xtick = {0,500, 1000, ..., 3500},
-              /pgf/number format/use comma,
-              /pgf/number format/1000 sep={},
-              ]
-              % Add plots
-              \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/C6H12_pol0.txt};
-              \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-              \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/C6H12_pol1.txt};
-              \addlegendentry{$\theta_\mathrm{pol}=\ang{90}$}
-            \end{axis}
-          \end{tikzpicture}
-          \label{fig:c6h12}
-        } \\
-        \subfloat[]{
-        \tikzsetnextfilename{C6H5NO2}
-          \begin{tikzpicture}
-            \begin{axis}[
-              /tikz/line join=bevel,
-              width=0.45*\textwidth,
-              height=0.45*\textwidth,
-              grid,
-              legend style={at={(1,1)}, legend columns=1, anchor=north east},
-              every axis plot,
-              xmin = 0, xmax = 3500,
-              %ymin = \Pmin, ymax = \Pmax,
-              xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-              ylabel = {Zählrate $n$},
-              %xtick = {0,500, 1000, ..., 3500},
-              /pgf/number format/use comma,
-              /pgf/number format/1000 sep={},
-              ]
-              % Add plots
-              \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/C6H5NO2_pol0.txt};
-              \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-              \addplot[color=blue,  line width = 0.5pt] table [x=raman,y=n]{data/C6H5NO2_pol1.txt};
-              \addlegendentry{$\theta_\mathrm{pol}=\ang{90}$}
-            \end{axis}
-          \end{tikzpicture}
-          \label{fig:c6h5no2}
-        } \\
-        \subfloat[]{
-          \chemfig{H-C*6(=C(-H)-C(-H)=C(-H)-C(-H)=C(-H)-)}
-          \label{fig:c6h6-molecule}
-        }
-        \subfloat[]{
-          \chemfig{C(-[::210]H)(-[::150]H)*6(-C(-[::-90]H)(-[::-30]H)-C(-[::-90]H)(-[::-30]H)-C(-[::-90]H)(-[::-30]H)-C(-[::-90]H)(-[::-30]H)-C(-[::-90]H)(-[::-30]H)-)}
-          \label{fig:c6h12-molecule}
-        }
-        \subfloat[]{
-          \chemfig{N(=[::210]O)(-[::150]O)-C*6(=C(-H)-C(-H)=C(-H)-C(-H)=C(-H)-)}
-          \label{fig:c6h5no2-molecule}
-        }
-        \caption[Spektren der Kohlenstoffwasserstoff-Ringe und deren molekulare Struktur.]{Spektren der Kohlenstoffwasserstoff-Ringe \protect\subref{fig:c6h6} $\mathrm{C_6H_6}$ (\protect\subref{fig:c6h6-molecule}), \protect\subref{fig:c6h12} $\mathrm{C_6H_{12}}$ (\protect\subref{fig:c6h12-molecule}), \protect\subref{fig:c6h5no2} $\mathrm{C_6H_5NO_2}$ (\protect\subref{fig:c6h5no2-molecule}). }
-        \label{fig:ringe}
+        \includegraphics[width=0.5\textwidth]{figures/eyp_setup.png}
+        \caption{Relevant part of the experimental setup. The light of the evanescent field is scattered by the colloidal particles. For more explanations, please refer to \cref{sec:exp-setup}.}
+        \label{fig:exp-setup}
       \end{figure}
-      Die Messungen der Kohlenstoffringe erfolgten analog zu denen der Chlormethane.
 
-      Die Molekülstrukturen der untersuchten Kohlenstoffringe Benzol ($\mathrm{C_6H_6}$), Cyclohexan ($\mathrm{C_6H_{12}}$) und Nitrobenzol ($\mathrm{C_6H_5NO_2}$) sind in \cref{fig:ringe} dargestellt. Der bei jedem der Moleküle auftretenden innere Kohlenstoffring lässt eine starke Raman-Linie bei entsprechend der C-C-Streckschwingung bei $\SI{1206}{\per\centi\meter}$ (vgl. \cref{subsec:harm-oszi-absch}) erwarten. Weiter enthalten alle Moleküle mindestens fünf C-H-Bindungen, sodass außerdem deren Streckschwingung als Maximum in den Spektren bei $\SI{3063}{per\centi\meter}$ (vgl. \cref{subsec:harm-oszi-absch}) zu erwarten ist.
+      The experimental setup focuses on a glass cuvette holding an aqueous dispersion with colloidal particles. \Cref{fig:exp-setup} shows the relevant part of the experimental setup. Through a prisma, a red laser beam is focused on the sample at such an angle, that the beam is totally reflected and only an evanescent light field reaches the colloidal particles. This light is scattered and it's intensity measured at a fixed angle. Simultaneously, a green laser beam is used as an optical tweezer to hold the single particle in place which the red laser is focused on. Depending on the power of the green laser, the particle is trapped in a trap of varying strength.
+      \medskip
 
-      Die aufgenommenen Spektren sind in \cref{fig:ringe} abgebildet. Sowohl für $\mathrm{C_6H_6}$, als auch für $\mathrm{C_6H_5NO_2}$ sind die Raman-Linie der C-H-Streckschwingung an erwarteter Stelle zu finden. Lediglich beim $\mathrm{C_6H_{12}}$-Molekül treten anstelle der einzelnen Linie zwei, zu etwas kleineren Raman-Verschiebungen verschobene, Maxima auf. Mit einem Abstand von $\Delta \Delta \nu \approx \SI{80}{\per\centi\meter}$ sind diese gerade noch auflösbar und können als die beiden Streckschwingungen der $\mathrm{CH_2}$-Moleküle identifiziert werden.
+      Using the optical tweezers, a single colloidal particle is trapped. It can be tracked using the footage of a camera. Once the particle is centered on the computer screenv by moving the sample holder in a plane not affecting the angles of the incident laser beams, a different objective is rotated in front of the camera, resulting in a stronger amplyfication. Again, the particle is centered on the computer screen. Then, the intensity of the scattered light is recorded by a computer programm over the duration of $\SI{20}{\minute}$. Here, it is important to check from time to time, that the particle has not escaped from the optical tweezers.
 
-      Da die C-H-Streckschwingung symmetrisch ist, muss das Maximum stark polarisiert sein. Entsprechend werden die Maxima des Benzolrings bei $\sim\SI{994}{\per\centi\meter}$, des Cyclohexanrings bei $\sim\SI{801}{\per\centi\meter}$ und des Nitrobenzolrings bei $\sim\SI{1003}{\per\centi\meter}$ dieser Schwingung zugeordnet. Bei letzter ist nicht auszuschließen, dass einer der anderen Maxima in diesem Bereich der Raman-Verschiebung der Richtige ist, da alle größtenteils polarisiert sind. Jedoch ist die Molekularstruktur der von Benzol so ähnlich, dass eine äquivalente Raman-Verschiebung zu erwarten ist. Die zugeordnete Streckschwingung wird als Streckung des Rings bezeichnet, da sich bei gleichphasigem Schwingen der C-C-Bindungen der Durchmesser des Rings ändert.
+      This process is repeated for different input voltages of the optical tweezers' green laser: $U_\mathrm{tweezers}=\SI{0,76}{\volt},\SI{0,70}{\volt},\SI{0,65}{\volt},\SI{0,60}{\volt},\SI{0,00}{\volt}$. To measure the spectrum with the optical tweezers turned off, a particle is focused on analogously to the process with the optical tweezers turned on. During the measurement, the position of the sample holder must continuously be readjusted to track the particle.
 
-      \Cref{fig:ringe} zeigt die Spektrend der Kohlenstoffringe Benzol ($\mathrm{C_6H_6}$), Cyclohexan ($\mathrm{C_6H_{12}}$) und Nitrobenzol ($\mathrm{C_6H_5NO_2}$).
+      Then, a spectrum at $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ is recorded at a larger incident angle of the red laser (in respect to the normal of the prism's surface and the beam (compare \cref{fig:exp-setup})). Finally, a dark spectrum of the background noise is taken with the red laser turned off.
 
-
-  \section{Temperaturbestimmung von kristallinem Schwefel}
-  \label{sec:schwefel}
-
-    Ab hier ist der Polarisationsgrad der Raman-Linien nicht mehr von Interesse, weshalb alle folgenden Messungen mit Polarisationsfilter in Nullstellung durchgeführt wurden.
-
-    Durch das Verhältnis der Zählraten von Stokes- und Anti-Stokes-Maximum der prominenten Eigenschwingung von Schwefel soll hier die Temperatur des kristallinen Schwefels bestimmt werden. Dazu werden die Maxima bei $\sim\pm\SI{470}{\per\centi\meter}$ des in \cref{fig:schwefel} betrachtet. Aufgrund der Breite der Maxima und des Umstandes, dass das Rayleigh-Maximum nicht genau auf $\nu=\SI{0}{\per\centi\meter}$ liegt, wird ein Fehler von
-    \begin{equation*}
-      \delta \nu = \pm\SI{10}{\per\centi\meter}
-    \end{equation*}
-    angenommen.
-
-    Das Umformen von \cref{eq:stokesvergleich} nach der Temperatur $T$ ergibt unter Verwendung von
-    \begin{equation*}
-      \omega_n = 2\pi c \Delta \nu_\mathrm{Stokes}
-    \end{equation*}
-    und der Kreisfrequenz der Laserstrahlung
-    \begin{equation*}
-      \omega = \frac{2\pi c}{\lambda_\mathrm{L}},
-    \end{equation*}
-    mit $\lambda_\mathrm{L}=\SI{532}{\nano\meter}$, gerade
-    \begin{equation*}
-      T = \frac{h \Delta \nu  c}{k_\mathrm{B}\ln\left[ \frac{N_\mathrm{Stokes}}{N_\mathrm{Anti-Stokes}} \left( \frac{\frac{1}{\lambda_\mathrm{L}} - \Delta \nu_\mathrm{Stokes}}{\frac{1}{\lambda_\mathrm{L}}+\Delta \nu_\mathrm{Stokes}} \right)^4 \right]}=\SI{21}{\celsius}.
-    \end{equation*}
-    Hierbei ist $h$ das Plancksche Wirkungsquantum, $k_\mathrm{B}$ die Boltzmann-Konstante und
-    \begin{align*}
-      N_\mathrm{Stokes}=\int_{\Delta \nu = 450}^{\Delta \nu = 500}\Delta n(\Delta \nu') \mathrm{d}\Delta\nu', \\
-      N_\mathrm{Anti-Stokes}=\int_{\Delta \nu = -500}^{\Delta \nu = -450}\Delta n(\Delta \nu') \mathrm{d}\Delta\nu'.
-    \end{align*}
-    Während eine Änderung des Zählratenverhältnisses von $\pm\SI{10}{\percent}$ mit einer Temperaturänderung von $\Delta T \approx \SI{13}{\celsius} $ einhergeht, ändert eine $\SI{10}{\percent}$-ige Änderung der Raman-Verschiebung die Temperatur bereits um $\Delta T\approx\SI{30}{\celsius}$. Die entsprechende Änderung der Wellenlänge des Lasers ändert die Temperatur lediglich um $\Delta T\approx \SI{3}{\celsius}$.
-
-    Aufgrund der Symmetrie von Anti-Stokes- und Stokes- Maximum ist die mögliche Verschiebung der Raman-Linie jedoch sehr beschränkt. Es ist wegen der Abweichung von $\Delta \nu <\SI{4}{\per\centi\meter}$ mit einer maximalen Temperaturänderung von $\Delta T\approx\SI{1}{\celsius}$ zu rechnen.
-
-    Da das Verhältnis der Zählraten mittels Integrationen über die Breite der Maxima berechnet wurde, ist der zu erwartende Fehler ebenfalls gering. Damit sind die Messunsicherheiten an dieser Stelle als gering anzunehmen (sie sollten wenige $\si{\celsius}$ nicht überschreiten).
-
-    Das Ergebnis stimmt außerdem mit der Raumtemperatur, welche erfahrungsgemäß in den Räumlichkeiten bei ungefähr $T_\mathrm{Raum}=\SI{22}{\celsius}$ liegt, überein.
-
-    \begin{figure}[htb]
-      \centering
-      \tikzsetnextfilename{schwefel}
-      \begin{tikzpicture}
-        \begin{axis}[
-          /tikz/line join=bevel,
-          width=0.8*\textwidth,
-          height=0.5*\textwidth,
-          grid,
-          legend style={at={(1,1)}, legend columns=1, anchor=north east},
-          every axis plot,
-          xmin = -600, xmax = 600,
-          %ymin = \Pmin, ymax = \Pmax,
-          xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-          ylabel = {Zählrate $n$},
-          %xtick = {0,500, 1000, ..., 3000},
-          /pgf/number format/use comma,
-          /pgf/number format/1000 sep={},
-          ]
-          % Add plots
-          \addplot[color=red,  line width = 0.5pt] table [x=raman,y=n]{data/Schwefel_pol0.txt};
-          \addlegendentry{$\theta_\mathrm{pol}=\ang{0}$}
-        \end{axis}
-      \end{tikzpicture}
-      \caption[Spektrum von kristallinem Schwefel.]{Spektrum von kristallinem Schwefel. Wichtig für die Auswertung sind die Zählraten der prominenten Stokes- und Anti-Stokes-Maxima.}
-      \label{fig:schwefel}
-    \end{figure}
-
-  \section{Bestimmung eines Ethanol-Wasser-Mischungsverhältnisses}
-  \label{sec:ethanol}
-
-    \begin{figure}[htb]
-      \centering
-      \subfloat[]{
-        \tikzsetnextfilename{ethanol_vgl}
-        \begin{tikzpicture}
-          \begin{axis}[
-            /tikz/line join=bevel,
-            width=0.45*\textwidth,
-            height=0.45*\textwidth,
-            grid,
-            legend style={at={(1,1)}, legend columns=1, anchor=north east},
-            every axis plot,
-            xmin = 2700, xmax = 3700,
-            %ymin = \Pmin, ymax = \Pmax,
-            xlabel = {Raman-Verschiebung $\Delta \nu$ in $\si{\per\centi\meter}$},
-            ylabel = {Zählrate $n$},
-            %xtick = {0,500, 1000, ..., 3000},
-            /pgf/number format/use comma,
-            /pgf/number format/1000 sep={},
-            ]
-            % Add plots
-            \addplot[color=red, line width = 0.5pt] table [x=raman,y=n]{data/ethanol_wasser_2575_40000.txt};
-            \addlegendentry{$c_\mathrm{Ethanol}=\SI{25}{\percent}$}
-            \addplot[color=blue, line width = 0.5pt] table [x=raman,y=n]{data/ethanol_wasser_3070_40000.txt};
-            \addlegendentry{$c_\mathrm{Ethanol}=\SI{30}{\percent}$}
-            \addplot[color=green, line width = 0.5pt] table [x=raman,y=n]{data/ethanol_wasser_3565_40000.txt};
-            \addlegendentry{$c_\mathrm{Ethanol}=\SI{35}{\percent}$}
-            \addplot[color=orange, line width = 0.5pt] table [x=raman,y=n]{data/ethanol_wasser_4060_40000.txt};
-            \addlegendentry{$c_\mathrm{Ethanol}=\SI{40}{\percent}$}
-            \addplot[color=magenta, line width = 0.5pt] table [x=raman,y=n]{data/ethanol_wasser_4555_40000.txt};
-            \addlegendentry{$c_\mathrm{Ethanol}=\SI{45}{\percent}$}
-            \addplot[color=black, line width = 1pt] table [x=raman,y=n]{data/ethanol_wasser_40000.txt};
-            \addlegendentry{$c_\mathrm{Ethanol}=?\si{\percent}$}
-          \end{axis}
-        \end{tikzpicture}
-        \label{fig:ethanol-mischungen}
-      }
-      \subfloat[]{
-        \tikzsetnextfilename{ethanol_fit}
-        \begin{tikzpicture}
-          \begin{axis}[
-            /tikz/line join=bevel,
-            width=0.45*\textwidth,
-            height=0.45*\textwidth,
-            grid,
-            legend style={at={(1,1)}, legend columns=1, anchor=north east},
-            every axis plot,
-            xmin = 0, xmax = 0.6,
-            %ymin = \Pmin, ymax = \Pmax,
-            xlabel = {$c_\mathrm{Ethanol}$ in $\si{\percent}$},
-            ylabel = {$\frac{N_\mathrm{Ethanol}}{N_\mathrm{Wasser}}$},
-            %xtick = {0,500, 1000, ..., 3000},
-            /pgf/number format/use comma,
-            /pgf/number format/1000 sep={},
-            ]
-            % Add plots
-            \addplot[color=blue, only marks, line width = 0.5pt] table [x=konz,y=rel]{data/ethanol_data.txt};
-            \addlegendentry{Bekannte Mischungen}
-            \addplot[color=red, only marks, line width = 0.5pt] coordinates {(0.29,0.665)};
-            \addlegendentry{Unbekannte Mischung}
-            \addplot[color=green, line width = 0.5pt] {0.051267+2.1181*x};
-            \addlegendentry{Lineare Regression}
-          \end{axis}
-        \end{tikzpicture}
-        \label{fig:ethanol-fit}
-      }
-      \caption[Spektren von Ethanol-Wasser-Mischungen mit bekannten Ethanol-Konzentrationen $c_\mathrm{Ethanol}$ und einer Mischung unbekannter Konzentration, sowie lineare Regression des Zählratenverhältnisses von Ethanol und Wasser Maximum der verschiedenen Proben.]{Spektren von Ethanol-Wasser-Mischungen mit bekannten Ethanol-Konzentrationen $c_\mathrm{Ethanol}$ und einer Mischung unbekannter Konzentration, sowie lineare Regression des Zählratenverhältnisses von Ethanol und Wasser Maximum der verschiedenen Proben. \protect\subref{fig:ethanol-mischungen} Spektren der verschiedenen Mischungen. Offenbar fällt die Konzentration der unbekannten Mischung in den Rahmen der bekannten. \protect\subref{fig:ethanol-fit} Lineare Regression der Zählratenverhältnisse von Ethanol und Wasser Maximum für die verschiedenen Proben zur Einordnung der unbekannten Mischung (Korrektur der Ethanolkonzentration bereits berücksichtigt, vgl. \cref{sec:ethanol}).}
-      \label{}
-    \end{figure}
-
-    Zur Bestimmung einer unbekannten Konzentration $c_\mathrm{Ethanol}$ in einer Ethanol-Wasser-Mischung werden zunächst die Spektren von purem Ethanol bzw. Wasser mit dem Spektrum der fraglichen Probe verglichen. Das Verhältnis der Höhe der Maxima führt zu einer Abschätzung der Konzentration auf $c_\mathrm{Ethanol}\approx\SI{40}{\percent}$. Da aufgrund der verschiedenen Dichten von Ethanol und Wasser das Verhältnis der Höhe der Maxima nicht linear verläuft, werden nun mehrere Mischungen bekannter Konzentration zwischen $\SI{25}{\percent}$ und $\SI{55}{\percent}$ vermessen. Hierbei muss beachtet werden, dass das verwendete Ethanol als Industrieethanol einige Prozent Wasser enthält. Aufgrund der üblichen Handelsprodukte ist der Wassergehalt hier mit $c_\mathrm{Wasser}=\SI{5}{\percent}$ abgeschätzt.
-
-    Wie schon in \cref{sec:schwefel}, sind die Zählraten $N_\mathrm{Ethanol/Wasser}$ mit einem Integral berechnet. Für das Maximum von Ethanol wurden die Integrationsgrenzen $\SI{2850}{\per\centi\meter}$ und $\SI{3000}{\per\centi\meter}$ gewählt, für das Maximum von Wasser $\SI{3200}{\per\centi\meter}$ und $\SI{3450}{\per\centi\meter}$.
-
-    Die so erhaltenen Messpunkte sind inklusive der Korrektur der Ethanolkonzentration in \cref{fig:ethanol-fit} abgebildet. Hierbei wurden die Messpunkte für $c_\mathrm{Ethanol}=\SI{50}{\percent}, \SI{55}{\percent}$ weggelassen, da diese durch Messfehler Zählratenverhältnisse von $\sim{0,1}$ erbringen. Dies sind physikalisch auszuschließen.
-    \begin{equation*}
-      c_\mathrm{Ethanol}=\SI{29}{\percent}
-    \end{equation*}
-    ergibt sich durch Lösen der linearen Regression
-    \begin{equation*}
-      \frac{N_\mathrm{Ethanol}}{N_\mathrm{Wasser}}=\SI{0,05126(484)}{\percent}+\SI{2,1181(135)}{\percent}\cdot c_\mathrm{Ethanol}
-    \end{equation*}
-    an der Stelle $\frac{N_\mathrm{Ethanol}}{N_\mathrm{Wasser}}=0,6654$. Da die Fehler der Regressionsparameter viel zu gering sind, um die Messunsicherheiten des Experiments wiederzuspiegeln, wurde hier auf eine Fehlerfortpflanzung verzichtet. Eine Variation des Zählratenverhältnisses $\frac{N_\mathrm{Ethanol}}{N_\mathrm{Wasser}}$ führt zu einer Abweichung von $\sim \pm\SI{3}{\percent}$, während eine mögliche Abweichung des angenommenen Wasseranteils im Ethanol sich im Ergebnis kaum bemerkbar macht.
-    Der Abweichung von den anfänglich angenommenen $\SI{40}{\percent}$ könnte die Nichtlinearität von Zählratenverhältnis und Ethanolkonzentration zugrunde liegen.
+      \begin{figure}[tb]
+        \centering
+        \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/intensity_time.pdf} \label{fig:i-t-70}}
+        \hfill
+        \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/distance_time.pdf} \label{fig:z-t-70}}
+        \caption{Plots of the recorded raw data with the optical tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$. \protect\subref{fig:i-t-70} Recorded raw data: Intensity of the scattered light over time. \protect\subref{fig:i-t-70} Same data with a proccessed intensity axis, now showing the distance $z$ between particle and cuvettes wallls ($I_0^{70}=2,6$).}
+        \label{fig:70-i-t-z-t}
+      \end{figure}
 
 
-  \section{Fazit}
+    \section{Data analysis}
+    \label{sec:data-analysis}
 
-    Bei allen Messungen konnten die prominenten charakteristischen Merkmale der Spektren der Moleküle beobachtet werden. Weiter wurden lediglich simple Molekülstrukturen betrachtet. Trotzdem war die Zuordnung der Maxima in den Spektren zu den Schwingungen der Moleküle anhand der Raman-Spektroskopie schwierig und nicht immer eindeutig. Dies liegt nicht zuletzt an der Linienbreite der Maxima. Vor Allem durch Dopplerverbreiterung eng beieinanderliegender Maxima waren ebenjene nicht auflösbar, so lag der engste aufgelöste Abstand während des Experiments bei $\SI{80}{\per\centi\meter}$. Durch eine dopplerfreie Messung könnte das Auflösungsvermögen des Experiments signifikant verbessert werden.
+      In the following, the step by step evaluation is protocolled for one exemplary measurement data set. To this end, the measurement with the optical tweezers voltage $U=\SI{0,70}{\volt}$ is analysed in detail. The other measurements are analysed analogously and therefore, only the results will be presented for each step. To not cause any confusion, the measurements conducted for $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ did not yield any usable results. There are a lot of \textit{nan} values in the data set, which could therefore not be processed as the other sets. This might be due to the particle being lost from time to time. It is not really clear, as the particle has been observed most of the time of the measurement.
+      \medskip
 
-    Dank der Abschätzung, welche durch das Modell des harmonischen Oszillators für Streckschwingungen möglich war, konnten aber die auftretenden Streckschwingungen zweier Nachbaratome in den Molekülen fast immer zugeordnet werden. Die Zuordnung war lediglich bei vielen dicht nebeneinander liegenden Maxima und Atomen, die mit dem Atompaar in Wechselwirkung standen und dadurch für eine Verschiebung sorgten, nicht eindeutig.
+      \begin{figure}[tb]
+        \centering
+        \includegraphics[width=0.45\textwidth]{figures/70_potential.pdf}
+        \caption[Potential computed for the tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$.]{Potential computed for the tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$. The potential is divided in two overlaying sub-potentials and the respecting fits (compare \cref{eq:pot-fits}) plotted on top of the potential.}
+        \label{fig:potential-with-fits-70}
+      \end{figure}
 
+      \Cref{fig:i-t-70} shows the recorded raw data: The intensity of the scattered light $I(z)$ over a time axis. As the measurement of the background noise yielded a constant zero signal, the correction is irrelevant.  $z$ is the distance between the colloidal particle ad the wall of the cuvette. The dependency of $I$ on $z$ is given by
+      \begin{align}
+        I(z)&=I_0 \exp\left( -\beta z \right)  \\
+        \Rightarrow \quad z&=-\beta^{-1} \ln \left(\frac{I(z)}{I_0}\right)=-\beta^{-1}\ln I(z) + \beta^{-1}\ln I_0,
+      \end{align}
+      where $\beta^{-1}$ is the penetration depth of the evanescent field and $I_0$ the scatter intensity that results when particles and wall are in direct contact. At this point, only relative distances can be computed as $I_0$ is an unknown constant. As this oonstant will be computed in the course of this evaluation, the graph shown in \cref{fig:z-t-70} uses the absolute distance data with the parameter $I_0^{70}=2,6$.
+      \medskip
 
+      The computed potential $V(z)$ of the measurements is illustrated in \cref{fig:potential-with-fits-70} Using the potential's minimum as a breakpoint, it can be divided into two overlaying potentials: An exponential potential for the sharp drop at the beginning, and a linear rising after the minimum signifying the gravitational and the light force. The so divided sections of the potential are fitted with an exponential and a linear curve:
+      \begin{align}
+        \begin{split}
+          V_\mathrm{exp}(z) &= a\cdot \exp\left( -b z \right) + c \\
+          V_\mathrm{lin}(z) &= mz+ d.
+        \end{split}
+        \label{eq:pot-fits}
+      \end{align}
+      A small data modification needs to be done yet: The potential data is derived from a histogram that sorts by intervals of the Boltzman distribution. Therefore, the potential data points at high distance values contain only few scattered photons and can therefore be neglected. All in all, the selection of the intervall to be fitted with a linear fit is more or less an approximation o the authors to reach the wanted results. These results are plotted in \cref{fig:potential-with-fits-70} along with the potential itself.
 
+      At this point, the data of $I_\mathrm{tweezers}=\SI{0}{\volt}$ is used, to determine the gravitational potential. Because in the respective potential, there is no light force to be had since the laser has been turned off during the experiment, the linear part manifests only due to the gravitational potential. Taking the gradient of this potential, which is simply the slope of the fit in this case, the gravitation force on the particle is derived to be
+      \begin{equation*}
+        F_\mathrm{gravitational}^\mathrm{experimental}\approx\SI{3,9e-13}{\newton}\approx \SI{4,0e-13}{\newton}=\frac{4}{3}\pi r_\mathrm{particle}^3= \rho_\mathrm{Polysterene}*g=F_\mathrm{gravitational}^\mathrm{theoretical},
+      \end{equation*}
+      where $g=\SI{9,81}{\meter\per\square\second}$ is the gravitational acceleration on earth's surface, $r_\mathrm{particle}=\frac{a}{2}=\SI{2,14e-6}{\meter}$ the particle's radius and $\rho_\mathrm{Polysterene}$ the mass density of polysterene. Since the fit intervall has been optimized to hit close to the theoretical value, there is no way of approximating the unvertainties. The fit parameter error is only a very small secondary error. What could be done for a more precise evaluation is to weigh the different data points using the values of the histogram used to derive the potential form or even using the Boltzman distribution as a weight.
+      \medskip
 
+      The light force of the other measurements is now determined by substracting the linear fit of $I_\mathrm{tweezers}=\SI{0}{\volt}$ from the other linear fits, in explanation
+      \begin{equation}
+          V_\mathrm{Light-Force} = V_\mathrm{lin} - V_\mathrm{Gravitational},
+          \label{eq:light-forces}
+      \end{equation}
+      with the light force potential $V_\mathrm{Light-Force}$, the total linear potential $V_\mathrm{lin}$ and the graviational potential $V_\mathrm{gravitational}$. The results for all measurements are plotted in \cref{fig:light-forces}. Since increasing the voltage of the optical tweezers linearly scales with the number of emitted photons (the wavelength is constant), a linear scaling between light force and the tweezers' voltage is expected. The before mentioned figure shows exactly that, the light forces being
+      \begin{align*}
+        F_\mathrm{Light-Force}(U_\mathrm{tweezers}=\SI{0,70}{\volt})=\SI{-1,6e-13}{\newton} \\
+        F_\mathrm{Light-Force}(U_\mathrm{tweezers}=\SI{0,65}{\volt})=\SI{-1,0e-13}{\newton} \\
+        F_\mathrm{Light-Force}(U_\mathrm{tweezers}=\SI{0,60}{\volt})=\SI{-0,5e-13}{\newton} .
+      \end{align*}
+      As a result, expectations are that the linear part of the potentials becomes steeper for higher voltages of $U_\mathrm{tweezers}$. \Cref{fig:potentials} shows the comparison of all the measured potentials. As a matter of fact, the expectations are not satisfied by that comparison. The potentials' forms are seem to be distrubed too much to yield a clear tendency. Maybe bigger steps of $U_\mathrm{tweezers}$ would yield a more suggestive image.
 
-
-
+      \begin{figure}[tb]
+        \centering
+        \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/light_forces.pdf} \label{fig:light-forces}}
+        \hfill
+        \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/potentials.pdf} \label{fig:potentials}}
+        \caption{\protect\subref{fig:light-forces} Computed light forces (compare \cref{eq:light-forces}) for the different voltages $U_\mathrm{tweezers}$ of the optical tweezers. \protect\subref{fig:potentials} Comparison of all the measured potentials.}
+      \end{figure}
 
 
 
