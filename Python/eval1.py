@@ -25,6 +25,16 @@ plt.legend(('U_tweezers = 0,70  V', 'U_tweezers = 0,65 V', 'U_tweezers = 0,60 V'
 plt.show()
 potentials.savefig('potentials.pdf')
 
+potentials12 = plt.figure(9, figsize=(5,5))
+plt.plot(data[0], data[1])
+plt.plot(data[2], data[3])
+plt.grid(True)
+plt.xlabel('Distance in meters')
+plt.ylabel('Light force potential in units of k_B*T')
+plt.legend(('d = 218 nm', 'd = 75 nm'), loc='lower center')
+plt.show()
+potentials12.savefig('potentials12.pdf')
+
 
 
 min_index = np.argmin(data, axis=1)

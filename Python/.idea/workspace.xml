@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97a9a9db-ec1b-4588-accd-f6d761987f9a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eval.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eval1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Latex/bericht.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../Latex/bericht.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Latex/bericht.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../Latex/bericht.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Latex/kapitel/versuchsauswertung.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../Latex/kapitel/versuchsauswertung.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eval1.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval1.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,12 +33,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="4900" />
+          <entry key="py" value="5003" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="4900" />
+          <entry key="Python" value="5003" />
         </counts>
       </usages-collector>
     </session>
@@ -65,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eval1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+            <state relative-caret-position="344">
+              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -248,8 +243,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/eval1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        <state relative-caret-position="344">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
