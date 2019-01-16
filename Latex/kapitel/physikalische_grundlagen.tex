@@ -19,8 +19,20 @@
     with the density of the particle $\rho_\mathrm{p}$ and of the medium $\rho_\mathrm{m}$, the earth acceleration $g$, the particles radius $R$ and the distance from the wall $z$.
     \medskip
 
-    \textbf{Eletrostatic double layer force:}\\
-    The eletrostatic double layer force accounts for the repulsion between particles with the same charge and attraction between those particles of opposite charge. In this experiment, it describes the interaction between particles and the wall. If the particles are suspended in an electrolyte solution, as is the case here, the Poisson equation describes the relation between the electrostatic potential $\Phi (\vec{r})$ and the elementary charge $e$, $\vec{r}$ being the distance between the two interacting particles. The equation is given by
+    \subsection{Eletrostatic double layer force}
+    \label{subsec:edlf}
+
+    The eletrostatic double layer force accounts for the repulsion between particles with the same charge and attraction between those particles of opposite charge. In this experiment, it describes the interaction between particles and the wall. The colloidal particles are suspended in an electrolyte solution. \Cref{fig:edlf} illustrates the \textit{electrostatic double layer force}. The charged particle attracts electrolytes of the opposite charge and accumulates them in its perimeter. The same goes for the charged wall. Due to the shielding of particle and wall, the coulomb interaction between the two is reduced.
+    \medskip
+
+    \begin{figure}[b]
+      \centering
+      \includegraphics[width=0.5\textwidth]{figures/doublelayerforce.pdf}
+      \caption{Illustration of the \textit{electrostatic double layer force}. In red: The positively (negatively) charged colloidal particle and wall. In blue: The negatively (positively) charged electrolytes in the solution. For further explanations please rread \cref{subsec:edlf}.}
+      \label{fig:edlf}
+    \end{figure}
+
+    Speaking formulas, the Poisson equation describes the relation between the electrostatic potential $\Phi (\vec{r})$ and the elementary charge $e$, $\vec{r}$ being the distance between the two interacting particles. The equation is given by
     \begin{align*}
     \Delta \Phi (\vec{r})=-\frac{e^2}{\epsilon k_\mathrm{B} T}(\underbrace{\rho_+(\vec{r})+\rho_-(\vec{r})}_{\rho(\vec{r})},
     \end{align*}
@@ -30,23 +42,25 @@
     \begin{align*}
     \Delta \Phi= \frac{\beta e^2}{\epsilon}2\rho_+ \cdot\sinh\Phi= \underbrace{\frac{e^2}{\epsilon k_\mathrm{B} T}\sum_i \rho_i q_i^2}_{=\kappa^2} \cdot \sinh\Phi
     \end{align*}
-    using the inverse Debye length $\kappa$, with $q_i$ as the ion charge and $r\in G$, $G$ being the area which is neither particle nor surface. Introducing the surface charge density of the particles particles $\sigma_\mathrm{p}$ and of the wall $\sigma_\mathrm{w}$ and $z$ as the distance between particle surface and wall yields
+    using the inverse \textit{Debye screening length} $\kappa$, with $q_i$ as the ion charge and $r\in G$, $G$ being the area which is neither particle nor surface. This makes for a range of about $\SI{100}{\nano\meter}$, in which the \textit{electrostatic double layer force} is significant. Introducing the surface charge density of the particles particles $\sigma_\mathrm{p}$ and of the wall $\sigma_\mathrm{w}$ and $z$ as the distance between particle surface and wall yields
     \begin{align*}
-    \beta V_{dl}(z)=\frac{64\pi \epsilon a}{\beta e^2} \gamma_p \gamma_w e^{-\kappa(z)}, \\
+    \beta V_{dl}(z)=\frac{64\pi \epsilon a}{\beta e^2} \gamma_p \gamma_w e^{-\kappa z}, \\
     \gamma_\mathrm{w/p}=\tanh \left[ \frac{1}{2}\sinh^{-1}  \left( \frac{\beta e \sigma_\mathrm{w/p}}{2\epsilon \kappa } \right) \right],
     \end{align*}
     with $\beta=1/k_\mathrm{B} T$ as known from thermodynamics.
-    \medskip
 
-    \textbf{Van der Waals force:}\\
-    In comparison to the previously described electrostatic force, the Van der Waals force is much weaker. Moreover, it occurs mostly as an attractive force in nature. Microscopically, it is derived from the interactions between the fluctuating dipolmoments of the particles. Integration of the particle-particle and the particle-wall Van der Waals force over the sphere wall symmetry of this experiment provides
+    \subsection{Van der Waals force}
+    \label{subsec:vanderwaals}
+
+    In comparison to the previously described electrostatic force, the Van der Waals force is much weaker. Its range of significance is about $\SI{10}{\nano\meter}$. Moreover, it occurs mostly as an attractive force in nature. Microscopically, it is derived from the interactions between the fluctuating dipolmoments of the particles. Integration of the particle-particle and the particle-wall Van der Waals force over the sphere wall symmetry of this experiment provides
     \begin{align}
     \beta V_{disp}(z)=\frac{A(z)}{6k_B T}\left(\frac{2R}{z}\frac{z+R}{z+2R}-\ln\frac{z+2R}{z}\right),
     \end{align}
     with the distance between particle surface and wall $z$, $R$ the particle radius and $A(z)$ the Hamaker constant.
-    \medskip
 
-    \textbf{Light force with optical tweezers:}\\
+
+    \subsection{Light force}
+
     Counteracting some of the previously mentioned forces, optical tweezers can be used to hold particles in place by utilizing the light force. The light force accounts for the impulses of the icident photons being transferred to the particle when absorbing or reflecting the photons.
 
     To keep it simple, a one dimensional system is regarded. The graviational force acting in negative $x$-direction $\vec{F}_\mathrm{G}^x$ can be counteracted by light force in positive $x$-direction $\vec{F}_\mathrm{L}^x$ to keep a particle floating at $x=x_0=const.$ yielding
@@ -55,7 +69,7 @@
     \end{equation*}
     But optical tweezers can also hold dielectric particles in place against forces perpendicular to the light beam. To this end, a slightly focalised laser beam is utilized which holds the particle in the focus point as illustrated in \ref{fig:tweezer}.
 
-    \begin{figure}[tb]
+    \begin{figure}[bt]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/opticaltweezer}
     \caption{Particle trapped by an optical tweezer. The dielectric particle gravitates towards the beam center slightly above the beam waist. \cite{wiki:optical-tweezers}}
@@ -74,6 +88,7 @@
     \end{align}
     \cite{helden}
 
+
     \section{Brownian motion}
     \label{sec:brownian-motion}
 
@@ -89,16 +104,24 @@
         &=\rho(x,t)\cdot 1 +0+\pdv[2]{\rho}{x}\cdot \int_{-\infty}^{\infty} \frac{\Delta^2}{2}\varphi(\Delta ) \mathrm{d}\Delta +\cdots.
       \end{align*}
       While the integral in the second line equals one by definition of the probability, terms with even partials vanish due to symmetry of the 1D space. The above equation is leads to
-      \begin{align}
+      \begin{align*}
         \pdv{\rho}{t}&\approx\pdv[2]{\rho}{x}\cdot \int_{-\infty}^{\infty} \frac{\Delta^2}{2\tau} \varphi ( \Delta) \mathrm{d}\Delta \nonumber  \\
         &=D\cdot \pdv[2]{\rho}{x}  \label{eq:diffusion-equation}
-      \end{align}
+      \end{align*}
       if only terms of $\Delta$ with orders smaller than 2 are regarded and using the \textit{mass diffusivity} or \textit{diffusion coefficient}
-      \begin{equation}
-        D=\int_{-\infty}^{\infty} \frac{\Delta^2}{2\tau} \varphi ( \Delta) \mathrm{d}\Delta.
+      \begin{equation*}
+        D=\int_{-\infty}^{\infty} \frac{\Delta^2}{2\tau} \varphi ( \Delta) \mathrm{d}\Delta
         \label{eq:diffusion-coefficient}
-      \end{equation}
-      \cite{wiki:brownian-motion}
+      \end{equation*}
+      \cite{wiki:brownian-motion}. A simpler expression for the diffusion coefficient is
+    \begin{equation*}
+        D=\frac{k_\mathrm{B}T}{6\pi \eta r},
+    \end{equation*}
+    where $\eta$ is the viscosity of the fluid that the particle of radius $r$ is immersed in, $k_\mathrm{B}$ is the Boltzmann constant and $T$ the systems temperatur. The expression is called the \textit{Stokes-Einstein-diffusion coefficient}. Its is
+    \begin{equation*}
+      D=\left[ \si{\square\meter\per\second} \right].
+    \end{equation*}
+    Figuratively speaking, it is the area that the particle can explore, or rather move to, within a second.
 
 
       \subsection{Brownian motion in proximity of the cavity walls}
@@ -179,6 +202,9 @@
               p(h_0+ \Delta h)=A\exp\left( \frac{-\phi (h_0+\Delta h)}{k_\mathrm{B}T}\right).
            \end{equation*}
            Here, $A$ is a normalization constant and $\phi ( h_0 + \Delta h)$ the potential energy of the particle at position $h_0 + \Delta h$. For the form of the potential, the forces mentioned in \cref{sec:forces} must be respected. \cite{walz}
+
+           \subsubsection{Overdamped Langevin equation}
+
 
 
 

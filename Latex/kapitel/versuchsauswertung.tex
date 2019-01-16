@@ -7,15 +7,15 @@
     \section{Experimental setup and conduction}
     \label{sec:exp-setup}
 
-      \begin{figure}[bt]
+      The experimental setup focuses on a glass cuvette holding an aqueous dispersion with colloidal particles. \Cref{fig:exp-setup} shows the relevant part of the experimental setup. Through a prism, a red laser beam is focused on the sample at such an angle, that the beam is totally reflected and only an evanescent light field reaches the colloidal particles. This light is scattered and it's intensity measured at a fixed angle. Simultaneously, a green laser beam is used as an optical tweezer to hold the single particle in place which the red laser is focused on. Depending on the power of the green laser, the particle is trapped in a trap of varying strength.
+      \medskip
+
+      \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\textwidth]{figures/eyp_setup.png}
         \caption{Relevant part of the experimental setup. The light of the evanescent field is scattered by the colloidal particles. For more explanations, please refer to \cref{sec:exp-setup}.}
         \label{fig:exp-setup}
       \end{figure}
-
-      The experimental setup focuses on a glass cuvette holding an aqueous dispersion with colloidal particles. \Cref{fig:exp-setup} shows the relevant part of the experimental setup. Through a prism, a red laser beam is focused on the sample at such an angle, that the beam is totally reflected and only an evanescent light field reaches the colloidal particles. This light is scattered and it's intensity measured at a fixed angle. Simultaneously, a green laser beam is used as an optical tweezer to hold the single particle in place which the red laser is focused on. Depending on the power of the green laser, the particle is trapped in a trap of varying strength.
-      \medskip
 
       Using the optical tweezers, a single colloidal particle is trapped. It can be tracked using the footage of a camera. Once the particle is centered on the computer screen by moving the sample holder in a plane not affecting the angles of the incident laser beams, a different objective is rotated in front of the camera, resulting in a stronger amplification. Again, the particle is centered on the computer screen. Then, the intensity of the scattered light is recorded by a computer program over the duration of $\SI{20}{\minute}$. Here, it is important to check from time to time, that the particle has not escaped from the optical tweezers.
 
@@ -23,44 +23,38 @@
 
       Then, a spectrum at $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ is recorded at a larger incident angle of the red laser (in respect to the normal of the prism's surface and the beam (compare \cref{fig:exp-setup})). Finally, a dark spectrum of the background noise is taken with the red laser turned off.
 
-      \begin{figure}[tb]
-        \centering
-        \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/intensity_time.pdf} \label{fig:i-t-70}}
-        \hfill
-        \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/distance_time.pdf} \label{fig:z-t-70}}
-        \caption{Plots of the recorded raw data with the optical tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$. \protect\subref{fig:i-t-70} Recorded raw data: Intensity of the scattered light over time. \protect\subref{fig:i-t-70} Same data with a processed intensity axis, now showing the distance $z$ between particle and cuvettes walls ($I_0^{70}=2,6$).}
-        \label{fig:70-i-t-z-t}
-      \end{figure}
-
 
     \section{Data analysis}
     \label{sec:data-analysis}
 
        The $I_0$ values are determined by a trial and error method.
-       We plotted
+      \Cref{fig:I0determination} shows the plots of
        \begin{align*}
          I(z)&=I_0 \exp\left( -\beta z \right)
        \end{align*}
-       for different $I_0$ values and compared it to our measured $I(z)$ date as seen in \cref{eq:I0determination}.
+       for different $I_0$ values of the measured data points in orange. The theoretical diffusion coefficient for the given $I_0$ that the subfigures are titled with is plotted in blue. Comparing orange and blue curves and picking the theoretical functional running most similar to the data curve yields the optimized value of $I_0$ for further data evaluation.
+       \medskip
 
-        \begin{figure}[tb]
-              \centering
-              \includegraphics[width=0.70\textwidth]{figures/I0determination.PNG}
-              \caption{Plotted and measured intensity curves layered to find the best fit for $I_0$. The red line is the measured data, the blue line is the plot and $I_0= 1,9$ was chosen as the best fit. }
-              \label{fig:I0determination}
-        \end{figure}
+       With this set of diagrams the $I_0$ value for the $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ data-set is determined. As can be seen on \cref{fig:I0determination}, the curves do not match very well, saying that they do match at all. Still, this was the best looking data-set for $I_0$ determination. To not cause any confusion, the measurements conducted for $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ did not yield any usable results. There are a lot of \textit{nan} values in the data set, which could therefore not be processed in the manner of the the other sets. This might be due to the particle being lost from time to time. It is not really clear, as the particle has been visually observed most of the time of the measurement.
+      \medskip
 
-        The $I_0$ value were both plots are closest to each other is selected. With this set of diagrams the $I_0$ value for the $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ data-set is determined. This was the best looking data-set for $I_0$ determination,but to not cause any confusion, the measurements conducted for $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ did not yield any usable results. There are a lot of \textit{nan} values in the data set, which could therefore not be processed as the other sets. This might be due to the particle being lost from time to time. It is not really clear, as the particle has been observed most of the time of the measurement.
-        \medskip
+       \begin{figure}[htb]
+             \centering
+             \includegraphics[width=0.70\textwidth]{figures/I0determination.PNG}
+             \caption{In orange: The experimentally determined diffusion coefficient. In blue: The theoretical diffusion coefficient depending on $I_0$. For each subplot, the value of $I_0$ is given by the subplot's title. In this given case ($U_\mathrm{tweezers}=\SI{0,75}{\volt}$), the value $I_0=1,9$ has been chosen as best fitting. }
+             \label{fig:I0determination}
+       \end{figure}
 
       In the following, the step by step evaluation is written down for a new exemplary measurement data set, but $I_0$ is determined by the same process. To this end, the measurement with the optical tweezers voltage $U=\SI{0,70}{\volt}$ is analyzed in detail.  The other measurements are analyzed analogously and therefore,only the results will be presented for each step.
       \medskip
 
       \begin{figure}[tb]
         \centering
-        \includegraphics[width=0.45\textwidth]{figures/70_potential.pdf}
-        \caption[Potential computed for the tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$.]{Potential computed for the tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$. The potential is divided in two overlaying sub-potentials and the respecting fits (compare \cref{eq:pot-fits}) plotted on top of the potential.}
-        \label{fig:potential-with-fits-70}
+        \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/intensity_time.pdf} \label{fig:i-t-70}}
+        \hfill
+        \subfloat[]{\includegraphics[width=0.45\textwidth]{figures/distance_time.pdf} \label{fig:z-t-70}}
+        \caption{Plots of the recorded raw data with the optical tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$. \protect\subref{fig:i-t-70} Recorded raw data: Intensity of the scattered light over time. \protect\subref{fig:i-t-70} Same data with a processed intensity axis, now showing the distance $z$ between particle and cuvettes walls ($I_0^{70}=2,6$). The zero signal in \protect\subref{fig:i-t-70} and respectively the infinite signal in \protect\subref{fig:z-t-70} are due to the particle escaping from the optical tweezers.}
+        \label{fig:70-i-t-z-t}
       \end{figure}
 
       \Cref{fig:i-t-70} shows the recorded raw data: The intensity of the scattered light $I(z)$ over a time axis. As the measurement of the background noise yielded a constant zero signal, the correction is irrelevant.  $z$ is the distance between the colloidal particle at the wall of the cuvette. The dependency of $I$ on $z$ is given by
@@ -69,16 +63,22 @@
         \Rightarrow \quad z&=-\beta^{-1} \ln \left(\frac{I(z)}{I_0}\right)=-\beta^{-1}\ln I(z) + \beta^{-1}\ln I_0,
       \end{align}
       where $\beta^{-1}$ is the penetration depth of the evanescent field and $I_0$ the scatter intensity that results when particles and wall are in direct contact. At this point, only relative distances can be computed as $I_0$ is an unknown constant. As this constant will be computed in the course of this evaluation, the graph shown in \cref{fig:z-t-70} uses the absolute distance data with the parameter $I_0^{70}=2,6$. With \cref{eq:potential} in combination with the determined  $I_0^{70}=2,6$ the potential can be calculated.
-
       \medskip
+
+      \begin{figure}[p]
+        \centering
+        \includegraphics[width=\textwidth]{figures/75intensity_trajectory.pdf}
+        \caption{Binning of intensity over time and distance over time data as an intermediate step to computing the potential form for the data set of the $U_\mathrm{tweezers}=\SI{0,75}{\volt}$ measurement.}
+        \label{fig:pot-deriv}
+      \end{figure}
 
       The potential form is now computed with a given matlab code snippet. First, it extracts the recorded data and plots it twice: Once as a intensity over time plot, and once as a distance over time plot (compare the two plots on the lefthandside of \cref{fig:pot-deriv}). Then, the data points are binned into intensity and distance bins respectively. The potential is then proportional to the negative logarithm of the distance histogram over the distance axis.
 
-      \begin{figure}[htb]
+      \begin{figure}[tb]
         \centering
-        \includegraphics[width=\textwidth]{figures/75intensity_trajectory.pdf}
-        \caption{Binning of intensity over time and distance over time data as an intermediate step to computing the potential form.}
-        \label{fig:pot-deriv}
+        \includegraphics[width=0.45\textwidth]{figures/70_potential.pdf}
+        \caption[Potential computed for the tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$.]{Potential computed for the tweezers voltage $U_\mathrm{tweezers}=\SI{0,70}{\volt}$. The potential is divided in two overlaying sub-potentials and the respecting fits (compare \cref{eq:pot-fits}) plotted on top of the potential.}
+        \label{fig:potential-with-fits-70}
       \end{figure}
 
       The computed potential $V(z)$ of the measurements is illustrated in \cref{fig:potential-with-fits-70}. Using the potential's minimum as a breakpoint, it can be divided into two overlaying potentials: An exponential potential for the sharp drop at the beginning, and a linear rising after the minimum signifying the gravitational and the light force. The so divided sections of the potential are fitted with an exponential and a linear curve:
@@ -93,9 +93,9 @@
 
       At this point, the data of $I_\mathrm{tweezers}=\SI{0}{\volt}$ is used, to determine the gravitational potential. Because in the respective potential, there is no light force to be had since the laser has been turned off during the experiment, the linear part manifests only due to the gravitational potential. Taking the gradient of this potential, which is simply the slope of the fit in this case, the gravitation force on the particle is derived to be
       \begin{align*}
-        F_\mathrm{grav}^\mathrm{exp}\approx\SI{1,3e-13}{\newton}\approx \SI{2,0e-14}{\newton} / 10=\frac{4}{3}\pi r_\mathrm{particle}^3 (\rho_\mathrm{pol}-\rho_\mathrm{\ce{H2O}})*g*10=F_\mathrm{grav}^\mathrm{theo}*10,
+        F_\mathrm{grav}^\mathrm{exp}\approx\SI{1,3e-13}{\newton}\approx \SI{2,0e-14}{\newton} \cdot 10=\frac{4}{3}\pi r_\mathrm{particle}^3 (\rho_\mathrm{pol}-\rho_\mathrm{\ce{H2O}})\cdot g \cdot 10=F_\mathrm{grav}^\mathrm{theo} \cdot 10,
       \end{align*}gravitational
-      where $g=\SI{9,81}{\meter\per\square\second}$ is the gravitational acceleration on earth's surface, $r_\mathrm{particle}=\frac{a}{2}=\SI{2,14e-6}{\meter}$ the particle's radius and $\rho_\mathrm{pol/\ce{H2O}}$ are the mass densities of polysterene and water. To convert from units in $k_\mathrm{B}T$ to $\si{\newton}$, the room temperature has been approximated by $T=\SI{300}{\kelvin}$. Since the fit intervall has been optimized to hit close to the theoretical value, there is no way of approximating the uncertainties. So there is a factor of $1/10$ missing for the experimental value. Since, talking experiments, the derivation of the gravitational force is very easy, there must be a mistake within these evaluations. For now, the evaluation shall be continued with the incorrect value. The fit parameter error is only a very small secondary error. What could be done for a more precise evaluation is to weigh the different data points using the values of the histogram used to derive the potential form or even using the Boltzmann distribution as a weight.
+      where $g=\SI{9,81}{\meter\per\square\second}$ is the gravitational acceleration on earth's surface, $r_\mathrm{particle}=\frac{a}{2}=\SI{2,14e-6}{\meter}$ the particle's radius and $\rho_\mathrm{pol/\ce{H2O}}$ are the mass densities of polysterene and water. To convert from units in $k_\mathrm{B}T$ to $\si{\newton}$, the room temperature has been approximated by $T=\SI{300}{\kelvin}$. Since the fit intervall has been optimized to hit close to the theoretical value, there is no way of approximating the uncertainties. So there is a factor of $\frac{1}{10}$ missing for the experimental value. Since, talking experiments, the derivation of the gravitational force is very easy, there must be a mistake within these evaluations. For now, the evaluation shall be continued with the incorrect value. The fit parameter error is only a very small secondary error. What could be done for a more precise evaluation is to weigh the different data points using the values of the histogram used to derive the potential form or even using the Boltzmann distribution as a weight.
       \medskip
 
       The light force of the other measurements is now determined by subtracting the linear fit of $I_\mathrm{tweezers}=\SI{0}{\volt}$ from the other linear fits, in explanation
@@ -103,13 +103,32 @@
           V_\mathrm{Light-Force} = V_\mathrm{lin} - V_\mathrm{Gravitational},
           \label{eq:light-forces}
       \end{equation}
-      with the light force potential $V_\mathrm{Light-Force}$, the total linear potential $V_\mathrm{lin}$ and the gravitational potential $V_\mathrm{gravitational}$. The results for all measurements are plotted in \cref{fig:light-forces}. Since increasing the voltage of the optical tweezers linearly scales with the number of emitted photons (the wavelength is constant), a linear scaling between light force and the tweezers' voltage is expected. The before mentioned figure shows exactly that, the light forces being
+      with the light force potential $V_\mathrm{Light-Force}$, the total linear potential $V_\mathrm{lin}$ and the gravitational potential $V_\mathrm{gravitational}$. The results for all measurements are plotted in \cref{fig:light-forces}. Since increasing the voltage of the optical tweezers linearly scales with the number of emitted photons (the wavelength is constant), a linear scaling between light force and the tweezers' voltage is expected. Also, the optical tweezers' laser beam hits from positive $z$-direction, meaning the force should be parallel to the gravitational force. The before mentioned figure shows the linear scaling that, the light forces being
       \begin{align*}
         F_\mathrm{Light-Force}(U_\mathrm{tweezers}=\SI{0,70}{\volt})=\SI{-1,6e-13}{\newton} \\
         F_\mathrm{Light-Force}(U_\mathrm{tweezers}=\SI{0,65}{\volt})=\SI{-1,0e-13}{\newton} \\
-        F_\mathrm{Light-Force}(U_\mathrm{tweezers}=\SI{0,60}{\volt})=\SI{-0,5e-13}{\newton} .
+        F_\mathrm{Light-Force}(U_\mathrm{tweezers}=\SI{0,60}{\volt})=\SI{-0,5e-13}{\newton} ,
       \end{align*}
-      As a result, expectations are that the linear part of the potentials becomes steeper for higher voltages of $U_\mathrm{tweezers}$. \Cref{fig:potentials} shows the comparison of all the measured potentials. As a matter of fact, the expectations are not satisfied by that comparison. The potentials' forms are seem to be disturbed too much to yield a clear tendency. Maybe bigger steps of $U_\mathrm{tweezers}$ would yield a more suggestive image.
+      so the light force is negative and therefore acts in negative $z$-direction meaning antiparallel to the gravitational force. As a result, expectations are that the linear part of the potentials becomes flatter for higher voltages of $U_\mathrm{tweezers}$. \Cref{fig:potentials} shows the comparison of all the measured potentials. As a matter of fact, the expectations are not satisfied by that comparison. The potentials' forms are seem to be disturbed too much to yield a clear tendency. Maybe bigger steps of $U_\mathrm{tweezers}$ would yield a more suggestive image.
+
+      To get back to the light forces being negative, this might be due to the focus point of the laser being a little bit above the particle. If that were the case, the gradient force would pull the particle upwards. Since the gravitational force is so much off the theoretical value already, only a tendency and plausible explanation can be concluded. Still, the given explanation would also correspond to the particle escaping the optical trap from time to time, as has been mentioned earlier. A more precise evaluation of the forces would not hold any water.
+      \medskip
+
+      Regarding the exponential fit
+      \begin{equation*}
+        V_\mathrm{doublelayer}=A\exp\left(-\kappa z \right)
+      \end{equation*}
+      of the potenital, the inverse \textit{Debye screening length} $\kappa$ is given by the fit parameters so the \textit{Debye screening lengths} $\lambda_\mathrm{D}$ are
+      \begin{align*}
+        \lambda_\mathrm{D}^{U_\mathrm{tweezers}=\SI{0,00}{\volt}}\approx\SI{32,4}{\nano\meter}  \\
+        \lambda_\mathrm{D}^{U_\mathrm{tweezers}=\SI{0,60}{\volt}}\approx\SI{13,5}{\nano\meter}  \\
+        \lambda_\mathrm{D}^{U_\mathrm{tweezers}=\SI{0,65}{\volt}}\approx\SI{8,8}{\nano\meter} \\
+        \lambda_\mathrm{D}^{U_\mathrm{tweezers}=\SI{0,70}{\volt}}\approx\SI{13,5}{\nano\meter} .
+      \end{align*}
+      The fit parameter errors are neglected since they are too small to reflect the uncertainties of this experiment ($\propto \SI{e-18}{\nano\meter}$). Instead, the mean value is computed  resulting in
+      \begin{equation*}
+        \lambda_mathrm{D}^\mathrm{mean}=\SI{17(9)}{\nano\meter}.
+      \end{equation*}
       \medskip
 
       \begin{figure}[htb]
@@ -120,7 +139,7 @@
         \caption{\protect\subref{fig:light-forces} Computed light forces (compare \cref{eq:light-forces}) for the different voltages $U_\mathrm{tweezers}$ of the optical tweezers. \protect\subref{fig:potentials} Comparison of all the measured potentials.}
       \end{figure}
 
-      Finally, \cref{fig:two-blocks} shows the influence of the penetration depth of the evanescent field. Both measurements have been conducted at approximately the same tweezers voltage $U_\mathrm{tweezers}=\SI{0,76}{\volt}\approx \SI{0,75}{\volt}$. The penetration depth has been varied by changing the incident angle of the red laser onto the prism. The only significant difference between the two potentials is the shift to higher distances for the smaller penetration depth.
+      Finally, \cref{fig:two-blocks} shows the influence of the penetration depth of the evanescent field. Both measurements have been conducted at approximately the same tweezers voltage $U_\mathrm{tweezers}=\SI{0,76}{\volt}\approx \SI{0,75}{\volt}$. The penetration depth has been varied from $\beta_{U_\mathrm{tweezers} = \SI{0,76}{\nano\meter}}=\SI{218}{\nano\meter}$ to $\beta_{U_\mathrm{tweezers = \SI{0,75}{\volt}}}=\SI{75}{nano\meter}$ by changing the incident angle of the red laser onto the prism. The significant difference between the two potentials is the shift to higher distances for the smaller penetration depth. This can be explained by referring to \cref{eq:I-von-z}. Since the $z$-dependent intensity $I(z)$ scales with $\frac{1}{\beta}$ and the potential form does not depend on the penetration depth, the potential must shift to higher $z$-values for smaller penetration depths.
 
       \begin{figure}[htb]
         \centering
